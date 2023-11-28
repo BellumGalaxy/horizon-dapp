@@ -1,6 +1,7 @@
 "use client";
 import { useContract } from "@thirdweb-dev/react";
 import { HORIZON_ADDRESS } from "@/addresses/address";
+import Link from "next/link";
 
 const Titles = () => {
   const { contract } = useContract({ HORIZON_ADDRESS });
@@ -22,7 +23,9 @@ const Titles = () => {
             numbers and other conditions regarding this asset!
           </p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">More info</button>
+            <Link href="/allproducts/products">
+              <button className="btn btn-primary">More info</button>
+            </Link>
           </div>
         </div>
       </div>
@@ -40,7 +43,9 @@ const Titles = () => {
             numbers and other conditions regarding this asset!
           </p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">More info</button>
+            <Link href="/allproducts/products">
+              <button className="btn btn-primary">More info</button>
+            </Link>
           </div>
         </div>
       </div>
@@ -58,7 +63,9 @@ const Titles = () => {
             numbers and other conditions regarding this asset!
           </p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">More info</button>
+            <Link href="/allproducts/products">
+              <button className="btn btn-primary">More info</button>
+            </Link>
           </div>
         </div>
       </div>
@@ -76,7 +83,9 @@ const Titles = () => {
             numbers and other conditions regarding this asset!
           </p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">More info</button>
+            <Link href="/allproducts/products">
+              <button className="btn btn-primary">More info</button>
+            </Link>
           </div>
         </div>
       </div>
