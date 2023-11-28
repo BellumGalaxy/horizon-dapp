@@ -1,3 +1,5 @@
+import { useContract } from "@thirdweb-dev/react";
+
 const Administration = () => {
   return (
     <div>

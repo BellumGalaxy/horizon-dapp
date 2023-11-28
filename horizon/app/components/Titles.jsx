@@ -7,14 +7,10 @@ const Titles = () => {
   const { contract } = useContract({ HORIZON_ADDRESS });
 
   return (
-    //Preciso usar um map para iterar sobre os titulos e mostrar todos aqui.
-    <main>
+    <main className="mt-5">
       <div className="card card-side bg-base-100 shadow-xl">
         <figure>
-          <img
-            src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-            alt="Title"
-          />
+          <img src="/tokens/token1.jpg" alt="Title" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">New Title Available</h2>
@@ -24,17 +20,16 @@ const Titles = () => {
           </p>
           <div className="card-actions justify-end">
             <Link href="/allproducts/products">
-              <button className="btn btn-primary">More info</button>
+              <button className="btn btn-accent text-base-100">
+                More info
+              </button>
             </Link>
           </div>
         </div>
       </div>
       <div className="card card-side bg-base-100 shadow-xl mt-5">
         <figure>
-          <img
-            src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-            alt="Title"
-          />
+          <img src="/tokens/token2.jpg" alt="Title" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">New Title Available</h2>
@@ -44,17 +39,16 @@ const Titles = () => {
           </p>
           <div className="card-actions justify-end">
             <Link href="/allproducts/products">
-              <button className="btn btn-primary">More info</button>
+              <button className="btn btn-accent text-base-100">
+                More info
+              </button>
             </Link>
           </div>
         </div>
       </div>
       <div className="card card-side bg-base-100 shadow-xl mt-5">
         <figure>
-          <img
-            src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-            alt="Title"
-          />
+          <img src="/tokens/token3.jpg" alt="Title" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">New Title Available</h2>
@@ -64,17 +58,16 @@ const Titles = () => {
           </p>
           <div className="card-actions justify-end">
             <Link href="/allproducts/products">
-              <button className="btn btn-primary">More info</button>
+              <button className="btn btn-accent text-base-100">
+                More info
+              </button>
             </Link>
           </div>
         </div>
       </div>
       <div className="card card-side bg-base-100 shadow-xl mt-5">
         <figure>
-          <img
-            src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-            alt="Title"
-          />
+          <img src="/tokens/token4.jpg" alt="Title" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">New Title Available</h2>
@@ -84,7 +77,9 @@ const Titles = () => {
           </p>
           <div className="card-actions justify-end">
             <Link href="/allproducts/products">
-              <button className="btn btn-primary">More info</button>
+              <button className="btn btn-accent text-base-100">
+                More info
+              </button>
             </Link>
           </div>
         </div>
