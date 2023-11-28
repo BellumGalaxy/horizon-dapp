@@ -1,6 +1,6 @@
 import { useContract, useContractWrite } from "@thirdweb-dev/react";
 
-export default function Component() {
+export default function BuyTitle() {
   const { contract } = useContract(
     "0xA40248f23B9a587F90827746E79AF361aDFb3844"
   );

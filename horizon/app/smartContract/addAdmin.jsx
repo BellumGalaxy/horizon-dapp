@@ -1,4 +1,4 @@
-export default function Component() {
+export default function AddAdmin() {
   const { contract } = useContract(
     "0x3547951AAA367094AFABcaE24f123473fF502bFa"
   );

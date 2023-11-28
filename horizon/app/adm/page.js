@@ -1,13 +1,15 @@
 "use client";
 import { ThirdwebProvider, useContract } from "@thirdweb-dev/react";
-import CreateT from "../smartContract/createTitle";
 import MyCollapse from "../components/Collapse";
-import AddFujiReceiver from "../smartContract/addReceiver";
-import AddPolyReceiver from "../smartContract/addReceiverF";
-import CallVRF from "../smartContract/monthlyVRF";
-import SelectWinner from "../smartContract/receiveVRF";
-import UpdateTitle from "../smartContract/updateTitle";
-import WinnerW from "../smartContract/winnerWithdraw";
+import {
+  CreateT,
+  AddFujiReceiver,
+  AddPolyReceiver,
+  CallVRF,
+  SelectWinner,
+  UpdateTitle,
+  WinnerW,
+} from "../smartContract";
 
 const Administration = () => {
   return (
@@ -44,7 +46,7 @@ const Administration = () => {
       </MyCollapse>
       <MyCollapse title="Pay Winner">
         <ThirdwebProvider>
-          <WinnerW/>
+          <WinnerW />
         </ThirdwebProvider>
       </MyCollapse>
     </div>

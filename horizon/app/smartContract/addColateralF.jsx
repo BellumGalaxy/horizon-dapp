@@ -1,6 +1,6 @@
 import { useContract, useContractWrite } from "@thirdweb-dev/react";
 
-export default function Component() {
+export default function AddColateralF() {
   const { contract } = useContract(
     "0xe5121F551333DD569602E82483641D8ad0D93718"
   );
