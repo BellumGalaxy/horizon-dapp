@@ -1,10 +1,9 @@
 "use client";
 import { useContract } from "@thirdweb-dev/react";
-import { HORIZON_ADDRESS } from "@/addresses/address";
 import Link from "next/link";
+import { AllTitles } from "../smartContract";
 
 const Titles = () => {
-  const { contract } = useContract({ HORIZON_ADDRESS });
 
   return (
     <main className="mt-5">
@@ -15,6 +14,7 @@ const Titles = () => {
         <div className="card-body">
           <h2 className="card-title">New Title Available</h2>
           <p>
+            <AllTitles/>
             Click on More Info below to find out about values, installment
             numbers and other conditions regarding this asset!
           </p>

@@ -10,16 +10,27 @@ export default function CreateT() {
     "createTitle"
   );
 
-  // Estados para armazenar os valores dos inputs
   const [opening, setOpening] = useState("");
   const [closing, setClosing] = useState("");
   const [participants, setParticipants] = useState("");
   const [value, setValue] = useState("");
 
+  const convertToTimestamp = (dateString) => {
+    return Math.floor(new Date(dateString).getTime() / 1000);
+  };
+
   const call = async () => {
     try {
+      const openingTimestamp = convertToTimestamp(opening);
+      const closingTimestamp = convertToTimestamp(closing);
+
       const data = await createTitle({
-        args: [opening, closing, parseInt(participants), parseFloat(value)],
+        args: [
+          openingTimestamp,
+          closingTimestamp,
+          parseInt(participants),
+          parseInt(value),
+        ],
       });
       console.info("contract call success", data);
     } catch (err) {
@@ -30,52 +41,46 @@ export default function CreateT() {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="flex items-center mb-4">
-        <span className="text-sm text-gray-600 w-48">
-          Data/hora de abertura
-        </span>
+        <span className="text-sm text-gray-600 w-48">Opening Time</span>
         <input
           type="datetime-local"
           placeholder="Opening"
           value={opening}
           onChange={(e) => setOpening(e.target.value)}
-          className="mr-2 p-2 border border-gray-300 rounded"
+          className="mr-2 p-2 border border-gray-300 rounded w-8/12"
         />
       </div>
 
       <div className="flex items-center mb-4">
-        <span className="text-sm text-gray-600 w-48">
-          Data/hora de fechamento
-        </span>
+        <span className="text-sm text-gray-600 w-48">Closing Time</span>
         <input
           type="datetime-local"
           placeholder="Closing"
           value={closing}
           onChange={(e) => setClosing(e.target.value)}
-          className="mr-2 p-2 border border-gray-300 rounded"
+          className="mr-2 p-2 border border-gray-300 rounded w-8/12"
         />
       </div>
 
       <div className="flex items-center mb-4">
-        <span className="text-sm text-gray-600 w-48">
-          Número de participantes
-        </span>
+        <span className="text-sm text-gray-600 w-48">Participants Number</span>
         <input
           type="number"
           placeholder="Participants"
           value={participants}
           onChange={(e) => setParticipants(e.target.value)}
-          className="mr-2 p-2 border border-gray-300 rounded"
+          className="mr-2 p-2 border border-gray-300 rounded w-8/12"
         />
       </div>
 
       <div className="flex items-center mb-4">
-        <span className="text-sm text-gray-600 w-48">Valor do título</span>
+        <span className="text-sm text-gray-600 w-48">Total Value</span>
         <input
           type="number"
           placeholder="Value"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          className="mr-2 p-2 border border-gray-300 rounded"
+          className="mr-2 p-2 border border-gray-300 rounded w-8/12"
         />
       </div>
 

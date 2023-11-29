@@ -5,6 +5,7 @@ import WithdrawConditionsModal from "@/app/components/WithdrawConditionsModal";
 import Link from "next/link";
 
 const Products = () => {
+
   return (
     <main>
       <Carousel />

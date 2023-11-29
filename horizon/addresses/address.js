@@ -1,11 +1,2 @@
 export const FACTORY_ADDRESS = "0x0d8bb435d353f2fe767426042481f5620be7211b";
 export const CLIENT_ID = "b8488d3a4e9b62b0dd71dd98ac7c2993";
-export const HORIZON_ADDRESS = "";
-export const HORIZON__ADDRESS = "";
-export const HORIZON_STAFF_ADDRESS = "";
-export const HORIZON_VRF_ADDRESS = "";
-export const HORIZON_FUJI_R_ADDRESS = "";
-export const HORIZON_FUJI_S_ADDRESS = "";
-export const HORIZON_FUNCTION_ADDRESS = "";
-export const HORIZON_FUJI_A_ADDRESS = "";
-export const Fake_RWA_ADDRESS = "";
