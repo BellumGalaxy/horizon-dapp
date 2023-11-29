@@ -1,7 +1,6 @@
 "use client";
 import Title from "@/app/components/Title";
-import { BuyTitle } from "@/app/smartContract";
-import { ThirdwebProvider } from "@thirdweb-dev/react";
+import ThirdwebProviderApp from "../components/ThirdWebProvider";
 
 const Cart = () => {
   const selectedTitleId = 1;
@@ -9,9 +8,7 @@ const Cart = () => {
 
   return (
     <div>
-      <ThirdwebProvider>
         <Title />
-      </ThirdwebProvider>
     </div>
   );
 };

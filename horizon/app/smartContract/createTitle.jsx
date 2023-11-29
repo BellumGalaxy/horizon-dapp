@@ -1,42 +1,31 @@
 import React, { useState } from "react";
-import { useContract, useContractWrite } from "@thirdweb-dev/react";
+import { Web3Button } from "@thirdweb-dev/react";
+import { ThirdwebSDK } from "@thirdweb-dev/sdk";
+import Horizon_ABI from "../contracts_abi/Horizon.json";
+
+const sdk = new ThirdwebSDK("mumbai", {
+  clientId: "b8488d3a4e9b62b0dd71dd98ac7c2993",
+  secretKey: "",
+});
+const contractAddress = "0xA40248f23B9a587F90827746E79AF361aDFb3844";
+const contract = sdk.getContract(contractAddress);
 
 export default function CreateT() {
-  const { contract } = useContract(
-    "0xA40248f23B9a587F90827746E79AF361aDFb3844"
-  );
-  const { mutateAsync: createTitle, isLoading } = useContractWrite(
-    contract,
-    "createTitle"
-  );
-
   const [opening, setOpening] = useState("");
   const [closing, setClosing] = useState("");
   const [participants, setParticipants] = useState("");
   const [value, setValue] = useState("");
+  const { _format, contractName, sourceName, abi } = Horizon_ABI;
 
   const convertToTimestamp = (dateString) => {
     return Math.floor(new Date(dateString).getTime() / 1000);
   };
+  
+  const openingTimestamp = convertToTimestamp(opening);
+  const closingTimestamp = convertToTimestamp(closing);
+  const participant = parseInt(participants);
+  const val = parseInt(value);
 
-  const call = async () => {
-    try {
-      const openingTimestamp = convertToTimestamp(opening);
-      const closingTimestamp = convertToTimestamp(closing);
-
-      const data = await createTitle({
-        args: [
-          openingTimestamp,
-          closingTimestamp,
-          parseInt(participants),
-          parseInt(value),
-        ],
-      });
-      console.info("contract call success", data);
-    } catch (err) {
-      console.error("contract call failure", err);
-    }
-  };
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -84,13 +73,15 @@ export default function CreateT() {
         />
       </div>
 
-      <button
-        onClick={call}
-        disabled={isLoading}
-        className="px-4 py-2 bg-accent text-white rounded hover:bg-blue-700 disabled:bg-gray-300"
+      <Web3Button
+        contractAddress={contractAddress}
+        action={() => sdk.mutateAsync({ args: [openingTimestamp,
+        closingTimestamp,
+        participant,
+        val] })}
       >
         Create Title
-      </button>
+      </Web3Button>
     </div>
   );
 }

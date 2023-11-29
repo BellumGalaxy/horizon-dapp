@@ -1,5 +1,5 @@
 "use client";
-import { ThirdwebProvider } from "@thirdweb-dev/react";
+import ThirdwebProviderApp from "../components/ThirdWebProvider";
 import MyCollapse from "../components/Collapse";
 import {
   CreateT,
@@ -9,53 +9,37 @@ import {
   SelectWinner,
   UpdateTitle,
   WinnerW,
-  AddAdmin,
 } from "../smartContract";
 
 const Administration = () => {
   return (
+    <>
     <div className="space-y-3">
-      <MyCollapse title="Create a New Title">
-        <ThirdwebProvider activeChain="mumbai">
+      <ThirdwebProviderApp>
+        <MyCollapse title="Create a New Title">
           <CreateT />
-        </ThirdwebProvider>
-      </MyCollapse>
-      <MyCollapse title="Call Chainlink VRF">
-        <ThirdwebProvider activeChain="mumbai">
+        </MyCollapse>
+        <MyCollapse title="Call Chainlink VRF">
           <CallVRF />
-        </ThirdwebProvider>
-      </MyCollapse>
-      <MyCollapse title="Select Winner">
-        <ThirdwebProvider activeChain="mumbai">
+        </MyCollapse>
+        <MyCollapse title="Select Winner">
           <SelectWinner />
-        </ThirdwebProvider>
-      </MyCollapse>
-      <MyCollapse title="Update Titles">
-        <ThirdwebProvider activeChain="mumbai">
+        </MyCollapse>
+        <MyCollapse title="Update Titles">
           <UpdateTitle />
-        </ThirdwebProvider>
-      </MyCollapse>
-      <MyCollapse title="Pay Winner">
-        <ThirdwebProvider activeChain="mumbai">
+        </MyCollapse>
+        <MyCollapse title="Pay Winner">
           <WinnerW />
-        </ThirdwebProvider>
-      </MyCollapse>
-      <MyCollapse title="Fuji Network Receiver">
-        <ThirdwebProvider activeChain="mumbai">
+        </MyCollapse>
+        <MyCollapse title="Fuji Network Receiver">
           <AddFujiReceiver />
-        </ThirdwebProvider>
-      </MyCollapse>
-      <MyCollapse title="Poly Network Receiver">
-        <ThirdwebProvider activeChain="mumbai">
+        </MyCollapse>
+        <MyCollapse title="Poly Network Receiver">
           <AddPolyReceiver />
-        </ThirdwebProvider>
-      </MyCollapse>
-      <MyCollapse title="Add Admin">
-        <ThirdwebProvider activeChain="mumbai">
-          <AddAdmin />
-        </ThirdwebProvider>
-      </MyCollapse>
+        </MyCollapse>
+      </ThirdwebProviderApp>
     </div>
+    </>
   );
 };
 export default Administration;

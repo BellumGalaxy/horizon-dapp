@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useContract, useContractWrite } from "@thirdweb-dev/react";
+import Horizon_ABI from "../contracts_abi/Horizon.json";
 
 export default function WinnerW() {
+  const { _format, contractName, sourceName, abi } = Horizon_ABI;
   const [titleId, setTitleId] = useState("");
   const [contractId, setContractId] = useState("");
   const { contract } = useContract(
-    "0xA40248f23B9a587F90827746E79AF361aDFb3844"
+    "0xA40248f23B9a587F90827746E79AF361aDFb3844",
+    abi
   );
   const stablecoin = "0xA372e43b968AB1Cbf921dC198a8B6dD831cEEf56";
   const { mutateAsync: winnerWithdraw, isLoading } = useContractWrite(

@@ -1,2 +1,0 @@
-export const FACTORY_ADDRESS = "0x0d8bb435d353f2fe767426042481f5620be7211b";
-export const CLIENT_ID = "b8488d3a4e9b62b0dd71dd98ac7c2993";

@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useContract, useContractWrite } from "@thirdweb-dev/react";
+import HorizonFujiR_ABI from "../contracts_abi/HorizonFujiR.json";
 
 export default function AddPolyReceiver() {
+  const { _format, contractName, sourceName, abi } = HorizonFujiR_ABI;
   const [receiverAddress, setReceiverAddress] = useState("");
   const { contract } = useContract(
-    "0xe5121F551333DD569602E82483641D8ad0D93718"
+    "0xe5121F551333DD569602E82483641D8ad0D93718",
+    abi
   );
   const { mutateAsync: addReceiver, isLoading } = useContractWrite(
     contract,

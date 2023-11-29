@@ -1,4 +1,3 @@
-export { default as AddAdmin } from "./addAdmin";
 export { default as AddColateralF } from "./addColateralF";
 export { default as AddFujiReceiver } from "./addReceiver";
 export { default as AddPolyReceiver } from "./addReceiverF";

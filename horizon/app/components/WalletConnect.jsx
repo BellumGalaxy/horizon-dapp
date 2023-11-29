@@ -1,5 +1,4 @@
 import {
-  ThirdwebProvider,
   ConnectWallet,
   metamaskWallet,
   coinbaseWallet,
@@ -7,13 +6,11 @@ import {
   localWallet,
   embeddedWallet,
 } from "@thirdweb-dev/react";
-import { CLIENT_ID } from "@/addresses/address";
+import ThirdwebProviderApp from "./ThirdWebProvider";
 
 export default function Connect() {
   return (
-    <ThirdwebProvider
-      activeChain="mumbai"
-      clientId={CLIENT_ID}
+    <ThirdwebProviderApp
       supportedWallets={[
         metamaskWallet({ recommended: true }),
         coinbaseWallet({ recommended: true }),
@@ -32,6 +29,6 @@ export default function Connect() {
         modalSize={"compact"}
         welcomeScreen={{}}
       />
-    </ThirdwebProvider>
+    </ThirdwebProviderApp>
   );
 }
