@@ -3,19 +3,19 @@ import { Web3Button } from "@thirdweb-dev/react";
 import { ThirdwebSDK } from "@thirdweb-dev/sdk";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
 
+const { _format, contractName, sourceName, abi } = Horizon_ABI;
 const sdk = new ThirdwebSDK("mumbai", {
   clientId: "b8488d3a4e9b62b0dd71dd98ac7c2993",
   secretKey: "",
 });
 const contractAddress = "0xA40248f23B9a587F90827746E79AF361aDFb3844";
-const contract = sdk.getContract(contractAddress);
+const contract = sdk.getContractFromAbi(contractAddress, abi);
 
 export default function CreateT() {
   const [opening, setOpening] = useState("");
   const [closing, setClosing] = useState("");
   const [participants, setParticipants] = useState("");
   const [value, setValue] = useState("");
-  const { _format, contractName, sourceName, abi } = Horizon_ABI;
 
   const convertToTimestamp = (dateString) => {
     return Math.floor(new Date(dateString).getTime() / 1000);
