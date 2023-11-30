@@ -1,10 +1,14 @@
 "use client";
-import Carousel from "@/app/components/Carousel";
-import FeesModal from "@/app/components/FeesModal";
-import WithdrawConditionsModal from "@/app/components/WithdrawConditionsModal";
+import { useRouter } from "next/navigation";
+import Carousel from "./Carousel";
+import FeesModal from "./FeesModal";
+import WithdrawConditionsModal from "./WithdrawConditionsModal";
 import Link from "next/link";
 
-const Products = () => {
+const TitleDetails = ({ params }) => {
+  const product = useRouter();
+
+  console.log(params._titleId);
 
   return (
     <main>
@@ -148,11 +152,11 @@ const Products = () => {
         </p>
       </div>
       <button className="btn btn-block btn-accent text-base-100 text-lg mt-5">
-        <Link href="/allproducts/products/checkout">
+        <Link href={`/allproducts/${params.id}/checkout/`}>
           I agree with the information and want to buy!
         </Link>
       </button>
     </main>
   );
 };
-export default Products;
+export default TitleDetails;

@@ -16,7 +16,7 @@ export default function AddPolyReceiver() {
 
   const call = async () => {
     try {
-      const data = await addReceiver({ args: [_receiverAddress] });
+      const data = await addReceiver({ args: [receiverAddress] });
       console.info("contract call successs", data);
     } catch (err) {
       console.error("contract call failure", err);

@@ -1,3 +1,4 @@
+"use client";
 const FeesModal = () => {
   return (
     <div class="flex justify-center items-center">

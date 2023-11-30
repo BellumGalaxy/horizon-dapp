@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { useContract, useContractRead } from "@thirdweb-dev/react";
-import ThirdwebProviderApp from "../components/ThirdWebProvider";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
 
 export default function AllTitles({ titleId }) {
