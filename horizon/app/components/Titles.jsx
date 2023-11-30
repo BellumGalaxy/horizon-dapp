@@ -30,7 +30,6 @@ const Titles = () => {
     if (events && events.length > 0) {
       const formattedEvents = events.map((event) => {
         const eventData = event.data;
-        console.log(eventData);
         return {
           _titleId: eventData?._titleId?.toString() ?? "N/A",
           _scheduleId: eventData?._scheduleId?.toString() ?? "N/A",
@@ -40,7 +39,6 @@ const Titles = () => {
       });
       setTitles(formattedEvents);
 
-      console.log(_titleId);
     } else {
       setTitles([]);
     }
