@@ -7,7 +7,7 @@ export default function WinnerW() {
   const [titleId, setTitleId] = useState("");
   const [contractId, setContractId] = useState("");
   const { contract } = useContract(
-    "0xA40248f23B9a587F90827746E79AF361aDFb3844",
+    "0x57F4E779e346C285b2b4B6A342F01c471dcf224d",
     abi
   );
   const stablecoin = "0xA372e43b968AB1Cbf921dC198a8B6dD831cEEf56";

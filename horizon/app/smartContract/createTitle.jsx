@@ -8,7 +8,7 @@ const sdk = new ThirdwebSDK("mumbai", {
   clientId: "b8488d3a4e9b62b0dd71dd98ac7c2993",
   secretKey: "",
 });
-const contractAddress = "0xA40248f23B9a587F90827746E79AF361aDFb3844";
+const contractAddress = "0x57F4E779e346C285b2b4B6A342F01c471dcf224d";
 const contract = sdk.getContractFromAbi(contractAddress, abi);
 
 export default function CreateT() {
