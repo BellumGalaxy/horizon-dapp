@@ -22,4 +22,12 @@ export default function PayInstallment() {
       console.error("contract call failure", err);
     }
   };
+  return (
+    <div>
+      <h3 className="font-bold text-lg mt-5">Second Installment</h3>
+      <ul className="mt-3">
+        <li>Date of next installment:</li>
+      </ul>
+    </div>
+  );
 }

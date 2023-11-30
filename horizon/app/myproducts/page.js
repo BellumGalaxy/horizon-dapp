@@ -1,9 +1,12 @@
+"use client";
+import { AllTitles } from "../smartContract";
 
 
 const MyProducts = () => {
   return (
     <div>
-      <h1 className="text-7xl">My Products</h1>;
+      <AllTitles/>
+      <h1 className="text-7xl">My Products</h1>
     </div>
   );
 };

@@ -1,17 +1,14 @@
 "use client";
+import AllTitles from "../../../smartContract/allTitles";
 import BuyTitle from "../../../smartContract/buyTitle";
-import DrawDate from "../../../smartContract/drawDate";
-import PaymentDeadline from "../../../smartContract/paymentDeadline";
+import Title from "../../../components/Title";
 
 const CheckoutPage = ({ params }) => {
-
   //Fetch o scheduleId para passar pra função DrawDate;
 
   return (
     <div>
-      <PaymentDeadline _scheduleId={1} _installmentNumber={2} />
-      <DrawDate _scheduleId={1} _installmentNumber={1} />
-      <BuyTitle titleId={params.id} />
+      <Title titleId={params.id} />
     </div>
   );
 };
