@@ -7,7 +7,6 @@ import WithdrawConditionsModal from "../components/WithdrawConditionsModal";
 import FeesModal from "../components/FeesModal";
 import Link from "next/link";
 import { BigNumber } from "ethers";
-import { ethers } from "ethers";
 
 export default function AllTitles({ titleId }) {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;

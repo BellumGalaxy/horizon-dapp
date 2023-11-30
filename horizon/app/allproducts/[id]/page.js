@@ -2,7 +2,6 @@
 import AllTitles from "../../smartContract/allTitles";
 
 const TitleDetails = ({ params }) => {
-  console.log(params.id);
 
   return (
     <main>
