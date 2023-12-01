@@ -4,10 +4,10 @@ import Connect from "./WalletConnect";
 
 const links = [
   { href: "/allproducts", label: "Products" },
+  { href: "/events", label: "News" },
   { href: "/about", label: "About" },
   { href: "/myproducts", label: "My Products" },
   { href: "/adm", label: "Administration" },
-  { href: "/events", label: "News" },
 ];
 
 const Navbar = () => {
