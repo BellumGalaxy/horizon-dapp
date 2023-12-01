@@ -1,50 +1,85 @@
 "use client";
-import React from "react";
-import { useContract, useContractRead } from "@thirdweb-dev/react";
+import React, { useState, useEffect } from "react";
+import { useContract, useContractEvents } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
-import { BigNumber } from "ethers";
+import Spinner from "../components/Spinner";
+import TitleOwnersModal from "../components/TitlesOwnerModal";
 
-export default function MyTitles({ ownerAddress }) {
+export default function TitleOwners() {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
   const { contract } = useContract(
     "0x57F4E779e346C285b2b4B6A342F01c471dcf224d",
     abi
   );
-  const { data, isLoading } = useContractRead(contract, "titleOwner", [
-    ownerAddress,
-  ]);
+  const { topics, data: events } = useContractEvents(contract, "NewTitleSold");
+  const [titles, setTitles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  if (isLoading) {
-    return <main>Loading...</main>;
-  }
-
-  if (!data) {
-    return <main>No data available</main>;
-  }
-
-  console.log(data);
+  useEffect(() => {
+    setIsLoading(true);
+    if (events && events.length > 0) {
+      const formattedEvents = events.map((event) => {
+        const eventData = event.data;
+        return {
+          titleId: eventData?.titleId?.toString() ?? "N/A",
+          _contractId: eventData?._contractId?.toString() ?? "N/A",
+          _owner: eventData?._owner?.toString() ?? "N/A",
+        };
+      });
+      setTitles(formattedEvents);
+    } else {
+      setTitles([]);
+    }
+    setIsLoading(false);
+  }, [events]);
 
   return (
-    <main>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <img src="/title2.jpg" className="max-w-sm rounded-lg shadow-2xl" />
-          <div>
-            <h1 className="text-4xl font-bold text-center">
-              Infos about your Title
-            </h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut
-            </p>
-            <p>Contract ID: {data.contractId.toString()}</p>
-            <p>Title Value: {data.titleValue.toString()}</p>
-            <div className="space-x-20">
-              <button className="btn btn-primary">Pay Installment</button>
-              <button className="btn btn-primary">Add Coleteral</button>
-            </div>
+    <main className="mt-5">
+      {isLoading ? (
+        <div className="flex justify-center items-center">
+          <div
+            className="spinner-border animate-spin inline-block w-16 h-16 border-4 rounded-full"
+            role="status"
+          >
+            <span className="visually-hidden">
+              <Spinner />
+            </span>
           </div>
         </div>
-      </div>
+      ) : (
+        titles.map((event, index) => (
+          <div
+            key={event._titleId}
+            className="card card-side bg-base-100 shadow-xl mt-5"
+          >
+            <div className="hero min-h-screen bg-base-200">
+              <div className="hero-content flex-col lg:flex-row-reverse">
+                <h1 className="font-bold text-lg my-2">School Financing</h1>
+                <img
+                  src="/title2.jpg"
+                  className="max-w-xl rounded-lg shadow-2xl"
+                />
+                <div className="card-body place-content-center">
+                  <p className="">Hello! Welcome back!</p>
+                  <p className="py-3">
+                    We were protecting your investments while you weren't
+                    around.
+                  </p>
+                  <h2 className="card-title">Title ID: {event._titleId}</h2>
+                  <ul>
+                    <li>Title Id: {event.titleId}</li>
+                    <li>Contract Id: {event._contractId}</li>
+                    <li>Owner: ${event._owner}</li>
+                  </ul>
+                </div>
+                <div>
+                  <TitleOwnersModal />
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      )}
     </main>
   );
 }

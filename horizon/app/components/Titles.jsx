@@ -4,6 +4,7 @@ import { useContract, useContractEvents } from "@thirdweb-dev/react";
 import Link from "next/link";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
 import Spinner from "./Spinner";
+import { ethers } from "ethers";
 
 const titleImages = [
   "/tokens/token1.jpg",
@@ -33,11 +34,9 @@ const Titles = () => {
         return {
           _titleId: eventData?._titleId?.toString() ?? "N/A",
           _scheduleId: eventData?._scheduleId?.toString() ?? "N/A",
-          _monthlyValue:
-            parseFloat(eventData?._monthlyValue?.toString()) / 10 ** 18 ??
-            "N/A",
+          _monthlyValue: eventData?._monthlyValue?.toString() ?? "N/A",
           _titleValue:
-            parseFloat(eventData?._titleValue?.toString()) / 10 ** 18 ?? "N/A",
+            convertWeiToDollar(eventData?._titleValue?.toString()) ?? "N/A",
         };
       });
       setTitles(formattedEvents);
@@ -47,10 +46,11 @@ const Titles = () => {
     setIsLoading(false);
   }, [events]);
 
-  const convertWeiToDollar = (wei) => {
-    const etherValue = wei;
-    return parseFloat(etherValue) / 10 ** 18;
-  };
+const convertWeiToDollar = (wei) => {
+  const ether = ethers.utils.formatEther(wei || "0");
+  const dollarValue = parseFloat(ether); 
+  return dollarValue.toFixed(2);
+};
 
   return (
     <main className="mt-5">
@@ -65,7 +65,7 @@ const Titles = () => {
             </span>
           </div>
         </div>
-      ) : (
+        ) : (
         titles.map((event, index) => (
           <div
             key={event._titleId}
@@ -81,8 +81,8 @@ const Titles = () => {
               <h2 className="card-title">Title ID: {event._titleId}</h2>
               <ul>
                 <li>Schedule: {event._scheduleId}</li>
-                <li>Value: ${event._titleValue}.00</li>
-                <li>Monthly Value: ${event._monthlyValue}.00</li>
+                <li>Value: ${event._titleValue}</li>
+                <li>Monthly Value: ${event._monthlyValue}</li>
                 <li>Installments: {event._installments}</li>
               </ul>
               <div className="card-actions">
