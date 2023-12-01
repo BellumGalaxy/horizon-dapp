@@ -14,7 +14,7 @@ const TitlesOwnerModal = ({ titleId, contractId }) => {
   };
 
   return (
-    <div className="space-x-6">
+    <div className="flex flex-wrap gap-2 justify-center lg:justify-start mt-4 absolute bottom-10 left-100">
       <button
         className="btn btn-accent text-base-100"
         onClick={() => document.getElementById("my_modal_1").showModal()}

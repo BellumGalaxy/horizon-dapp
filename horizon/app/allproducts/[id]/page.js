@@ -3,8 +3,6 @@ import AllTitles from "../../smartContract/allTitles";
 import Carousel from "../../components/Carousel";
 import WithdrawConditionsModal from "../../components/WithdrawConditionsModal";
 import FeesModal from "../../components/FeesModal";
-import DrawDate from "../../smartContract/drawDate";
-import PaymentDeadline from "../../smartContract/paymentDeadline";
 import Link from "next/link";
 
 const TitleDetails = ({ params }) => {

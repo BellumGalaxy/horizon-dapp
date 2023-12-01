@@ -1,6 +1,4 @@
 "use client";
-import AllTitles from "../../../smartContract/allTitles";
-import BuyTitle from "../../../smartContract/buyTitle";
 import Title from "../../../components/Title";
 
 const CheckoutPage = ({ params }) => {

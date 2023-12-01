@@ -61,11 +61,15 @@ export default function TitleOwners() {
           >
             <div className="hero min-h-screen bg-base-200">
               <div className="hero-content flex-col lg:flex-row-reverse">
-                <h1 className="font-bold text-lg my-2">School Financing</h1>
-                <img
-                  src="/title2.jpg"
-                  className="max-w-xl rounded-lg shadow-2xl"
-                />
+                <div>
+                  <h1 className="font-bold text-lg my-2">School Financing</h1>
+                </div>
+                <div>
+                  <img
+                    src="/title2.jpg"
+                    className="max-w-xl rounded-lg shadow-2xl"
+                  />
+                </div>
                 <div className="card-body place-content-center">
                   <p className="">Hello! Welcome back!</p>
                   <p className="py-3">
@@ -79,7 +83,7 @@ export default function TitleOwners() {
                     <li>Owner: {event._owner}</li>
                   </ul>
                 </div>
-                <div>
+                <div className="flex flex-wrap gap-2 justify-center lg:justify-start mt-4">
                   <TitleOwnersModal
                     titleId={event.titleId}
                     contractId={event._contractId}
