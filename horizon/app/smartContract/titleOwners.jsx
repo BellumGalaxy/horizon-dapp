@@ -5,12 +5,11 @@ import Horizon_ABI from "../contracts_abi/Horizon.json";
 import Spinner from "../components/Spinner";
 import TitleOwnersModal from "../components/TitlesOwnerModal";
 
+const contractAddress = "0x57F4E779e346C285b2b4B6A342F01c471dcf224d";
+
 export default function TitleOwners() {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
-  const { contract } = useContract(
-    "0x57F4E779e346C285b2b4B6A342F01c471dcf224d",
-    abi
-  );
+  const { contract } = useContract(contractAddress, abi);
   const { topics, data: events } = useContractEvents(contract, "NewTitleSold");
   const [titles, setTitles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -49,7 +48,7 @@ export default function TitleOwners() {
       ) : (
         titles.map((event, index) => (
           <div
-            key={event._titleId}
+            key={index}
             className="card card-side bg-base-100 shadow-xl mt-5"
           >
             <div className="hero min-h-screen bg-base-200">
@@ -73,7 +72,10 @@ export default function TitleOwners() {
                   </ul>
                 </div>
                 <div>
-                  <TitleOwnersModal />
+                  <TitleOwnersModal
+                    titleId={event.titleId}
+                    contractId={event._contractId}
+                  />
                 </div>
               </div>
             </div>

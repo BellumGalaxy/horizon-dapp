@@ -1,6 +1,32 @@
-const MyContractsTable = ({readableData}) => {
-    const data = readableData;
-    console.log(data);
+import { BigNumber } from "ethers";
+
+const MyContractsTable = ({ data }) => {
+
+  const convertBigNumbers = (bigNumbers) => {
+    return bigNumbers.map((bigNumber) =>
+      BigNumber.isBigNumber(bigNumber) ? bigNumber.toString() : bigNumber
+    );
+  };
+
+  const readableData = data ? convertBigNumbers(Object.values(data)) : [];
+
+  const convertTimestampToDate = (timestamp) => {
+    if (!timestamp) {
+      return "Invalid Timestamp";
+    }
+    const date = new Date(timestamp * 1000);
+    return `${date.toLocaleTimeString()} - ${date.toLocaleDateString()} `;
+  };
+
+  const convertWeiToDollar = (wei) => {
+    const etherValue = wei;
+    return parseFloat(etherValue) / 10 ** 18;
+  };
+
+  readableData[1] = convertWeiToDollar(readableData[1]);
+  readableData[3] = convertWeiToDollar(readableData[3]);
+  readableData[7] = convertWeiToDollar(readableData[10]);
+
   return (
     <div>
       <table className="">
@@ -63,5 +89,5 @@ const MyContractsTable = ({readableData}) => {
       </table>
     </div>
   );
-}
-export default MyContractsTable
+};
+export default MyContractsTable;

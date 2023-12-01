@@ -1,9 +1,18 @@
-import titlesSold from "../smartContract/titlesSold";
+"use client";
+import TitlesSold from "../smartContract/titlesSold";
 import PayInstallment from "../smartContract/payInstallment";
 import AddRWA from "../smartContract/addRwaColateral";
 import AddTitle from "../smartContract/addTitle";
+import AddCollateralF from "../smartContract/addColateralF";
+import { useState } from "react";
 
-const TitlesOwnerModal = ({ readableData }) => {
+const TitlesOwnerModal = ({ titleId, contractId }) => {
+  const [titleData, setTitleData] = useState(null);
+
+  const handleTitleData = (data) => {
+    setTitleData(data);
+  };
+
   return (
     <div className="space-x-6">
       <button
@@ -14,8 +23,11 @@ const TitlesOwnerModal = ({ readableData }) => {
       </button>
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <PayInstallment />
+          <PayInstallment
+            titleId={titleId}
+            contractId={contractId}
+            onReceiveData={handleTitleData}
+          />
         </div>
         <form method="dialog" className="modal-backdrop">
           <button className="btn-accent text-base-100">close</button>
@@ -29,8 +41,7 @@ const TitlesOwnerModal = ({ readableData }) => {
       </button>
       <dialog id="my_modal_2" className="modal">
         <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <AddTitle />
+          <AddTitle titleId={titleId} contractId={contractId} />
         </div>
         <form method="dialog" className="modal-backdrop">
           <button className="btn-accent text-base-100">close</button>
@@ -44,8 +55,19 @@ const TitlesOwnerModal = ({ readableData }) => {
       </button>
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <AddRWA />
+          <div className="flex w-full">
+            <div className="grid h-40 flex-grow card bg-base-300 rounded-box place-items-center">
+              <AddRWA titleId={titleId} contractId={contractId} />
+            </div>
+            <div className="divider divider-horizontal">OR</div>
+            <div className="grid h-40 flex-grow card bg-base-300 rounded-box place-items-center">
+              <AddCollateralF
+                titleId={titleId}
+                contractId={contractId}
+                titleData={titleData}
+              />
+            </div>
+          </div>
         </div>
         <form method="dialog" className="modal-backdrop">
           <button className="btn-accent text-base-100">close</button>
@@ -61,7 +83,11 @@ const TitlesOwnerModal = ({ readableData }) => {
         <div className="modal-box">
           <h3 className="font-bold text-lg">Check your title infos</h3>
 
-          <titlesSold />
+          <TitlesSold
+            titleId={titleId}
+            contractId={contractId}
+            onReceiveData={handleTitleData}
+          />
         </div>
         <form method="dialog" className="modal-backdrop">
           <button className="btn-accent text-base-100">close</button>

@@ -34,9 +34,11 @@ const Titles = () => {
         return {
           _titleId: eventData?._titleId?.toString() ?? "N/A",
           _scheduleId: eventData?._scheduleId?.toString() ?? "N/A",
-          _monthlyValue: eventData?._monthlyValue?.toString() ?? "N/A",
           _titleValue:
             convertWeiToDollar(eventData?._titleValue?.toString()) ?? "N/A",
+            _installments:
+              convertWeiToDollar(eventData?._installments?.toString()) ?? "N/A",
+            _monthlyValue: eventData?._monthlyValue?.toString() ?? "N/A",
         };
       });
       setTitles(formattedEvents);
@@ -82,8 +84,8 @@ const convertWeiToDollar = (wei) => {
               <ul>
                 <li>Schedule: {event._scheduleId}</li>
                 <li>Value: ${event._titleValue}</li>
-                <li>Monthly Value: ${event._monthlyValue}</li>
                 <li>Installments: {event._installments}</li>
+                <li>Monthly Value: ${event._monthlyValue}</li>
               </ul>
               <div className="card-actions">
                 <Link href={`/allproducts/${event._titleId}`}>
