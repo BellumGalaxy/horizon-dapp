@@ -1,7 +1,7 @@
 import titlesSold from "../smartContract/titlesSold";
-import payInstallment from "../smartContract/payInstallment";
-import addRWAColateral from "../smartContract/addRwaColateral";
-import addTitle from "../smartContract/addTitle";
+import PayInstallment from "../smartContract/payInstallment";
+import AddRWA from "../smartContract/addRwaColateral";
+import AddTitle from "../smartContract/addTitle";
 
 const TitlesOwnerModal = ({ readableData }) => {
   return (
@@ -15,7 +15,7 @@ const TitlesOwnerModal = ({ readableData }) => {
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg">Hello!</h3>
-          <payInstallment />
+          <PayInstallment />
         </div>
         <form method="dialog" className="modal-backdrop">
           <button className="btn-accent text-base-100">close</button>
@@ -30,7 +30,7 @@ const TitlesOwnerModal = ({ readableData }) => {
       <dialog id="my_modal_2" className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg">Hello!</h3>
-          <addTitle />
+          <AddTitle />
         </div>
         <form method="dialog" className="modal-backdrop">
           <button className="btn-accent text-base-100">close</button>
@@ -45,7 +45,7 @@ const TitlesOwnerModal = ({ readableData }) => {
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg">Hello!</h3>
-          <addRWAColateral />
+          <AddRWA />
         </div>
         <form method="dialog" className="modal-backdrop">
           <button className="btn-accent text-base-100">close</button>

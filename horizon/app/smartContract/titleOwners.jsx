@@ -69,7 +69,7 @@ export default function TitleOwners() {
                   <ul>
                     <li>Title Id: {event.titleId}</li>
                     <li>Contract Id: {event._contractId}</li>
-                    <li>Owner: ${event._owner}</li>
+                    <li>Owner: {event._owner}</li>
                   </ul>
                 </div>
                 <div>
