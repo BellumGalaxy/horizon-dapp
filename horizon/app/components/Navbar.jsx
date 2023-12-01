@@ -1,6 +1,10 @@
 "use client";
 import Link from "next/link";
 import Connect from "./WalletConnect";
+import { useAddress, useContract, useContractRead } from "@thirdweb-dev/react";
+import Horizon_ABI from "../contracts_abi/Horizon.json";
+
+const contractAddress = "0x57F4E779e346C285b2b4B6A342F01c471dcf224d";
 
 const links = [
   { href: "/allproducts", label: "Products" },
@@ -11,6 +15,26 @@ const links = [
 ];
 
 const Navbar = () => {
+  const { _format, contractName, sourceName, abi } = Horizon_ABI;
+  const address = useAddress();
+  const { contract } = useContract(contractAddress, abi);
+  const { data: owner } = useContractRead(contract, "owner");
+
+  console.log(owner);
+
+  const isOwner =
+    address && owner && address.toLowerCase() === owner.toLowerCase();
+
+   const userLinks = links.filter((link) => {
+     if (link.href === "/myproducts") {
+       return address;
+     }
+     if (link.href === "/adm") {
+       return isOwner;
+     }
+     return true;
+   });
+
   return (
     <nav className="bg-base-300 py-1">
       <div className="navbar bg-base-100">
@@ -50,7 +74,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            {links.map((link) => {
+            {userLinks.map((link) => {
               return (
                 <li key={link.href}>
                   <Link href={link.href} className="capitalize">
