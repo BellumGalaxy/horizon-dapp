@@ -26,7 +26,7 @@ const TitlesOwnerModal = ({ titleId, contractId }) => {
           <PayInstallment
             titleId={titleId}
             contractId={contractId}
-            onReceiveData={handleTitleData}
+            titleData={titleData}
           />
         </div>
         <form method="dialog" className="modal-backdrop">

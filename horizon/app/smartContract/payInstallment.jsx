@@ -7,11 +7,7 @@ import { BigNumber } from "ethers";
 const contractAddress = "0x57F4E779e346C285b2b4B6A342F01c471dcf224d";
 const stablecoin = "0xA372e43b968AB1Cbf921dC198a8B6dD831cEEf56";
 
-export default function PayInstallment({
-  titleId,
-  contractId,
-  onReceiveData: data,
-}) {
+export default function PayInstallment({ titleId, contractId, titleData }) {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
   const { contract } = useContract(contractAddress, abi);
   const { mutateAsync: payInstallment, isLoading } = useContractWrite(
@@ -25,7 +21,9 @@ export default function PayInstallment({
     );
   };
 
-  const readableData = data ? convertBigNumbers(Object.values(data)) : [];
+  const readableData = titleData
+    ? convertBigNumbers(Object.values(titleData))
+    : [];
 
   const call = async () => {
     try {
@@ -39,10 +37,13 @@ export default function PayInstallment({
   };
   return (
     <div>
-      <DrawDate scheduleId={""} installmentNumber={readableData[6]} />
+      <DrawDate
+        scheduleId={readableData[1]}
+        installmentNumber={parseInt(readableData[7])}
+      />
       <PaymentDeadline
-        scheduleId={""}
-        installmentNumber={parseInt(readableData[6]) + 1}
+        scheduleId={readableData[1]}
+        installmentNumber={parseInt(readableData[7]) + 1}
       />
     </div>
   );

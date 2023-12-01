@@ -1,6 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useContract, useContractEvents } from "@thirdweb-dev/react";
+import {
+  useContract,
+  useContractEvents,
+  useAddress,
+} from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
 import Spinner from "../components/Spinner";
 import TitleOwnersModal from "../components/TitlesOwnerModal";
@@ -9,6 +13,7 @@ const contractAddress = "0x57F4E779e346C285b2b4B6A342F01c471dcf224d";
 
 export default function TitleOwners() {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
+  const address = useAddress();
   const { contract } = useContract(contractAddress, abi);
   const { topics, data: events } = useContractEvents(contract, "NewTitleSold");
   const [titles, setTitles] = useState([]);
@@ -17,7 +22,10 @@ export default function TitleOwners() {
   useEffect(() => {
     setIsLoading(true);
     if (events && events.length > 0) {
-      const formattedEvents = events.map((event) => {
+      const filteredEvents = events.filter(
+        (event) => event.data?._owner?.toLowerCase() === address?.toLowerCase()
+      );
+      const formattedEvents = filteredEvents.map((event) => {
         const eventData = event.data;
         return {
           titleId: eventData?.titleId?.toString() ?? "N/A",
@@ -30,7 +38,7 @@ export default function TitleOwners() {
       setTitles([]);
     }
     setIsLoading(false);
-  }, [events]);
+  }, [events, address]);
 
   return (
     <main className="mt-5">
