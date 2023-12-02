@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import { Web3Button } from "@thirdweb-dev/react";
-import { ThirdwebSDK } from "@thirdweb-dev/sdk";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
 
-const { _format, contractName, sourceName, abi } = Horizon_ABI;
-const sdk = new ThirdwebSDK("mumbai", {
-  clientId: "b8488d3a4e9b62b0dd71dd98ac7c2993",
-  secretKey: "",
-});
 const contractAddress = "0x57F4E779e346C285b2b4B6A342F01c471dcf224d";
-const contract = sdk.getContractFromAbi(contractAddress, abi);
+const { _format, contractName, sourceName, abi } = Horizon_ABI;
 
 export default function CreateT() {
+  
+
   const [opening, setOpening] = useState("");
   const [closing, setClosing] = useState("");
   const [participants, setParticipants] = useState("");

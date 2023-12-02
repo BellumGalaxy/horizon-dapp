@@ -22,23 +22,22 @@ export default function AddPolyReceiver() {
       console.error("contract call failure", err);
     }
   };
-
   return (
     <div className="space-x-3">
-      <input
-        type="text"
-        placeholder="Receiver Address"
-        value={receiverAddress}
-        onChange={(e) => setReceiverAddress(e.target.value)}
-        className="input input-bordered w-full max-w-xs"
-      />
-      <button
-        onClick={call}
-        disabled={isLoading}
-        className="btn btn-accent text-base-100"
-      >
-        Add Receiver
-      </button>
+        <input
+          type="text"
+          placeholder="Receiver Address"
+          value={receiverAddress}
+          onChange={(e) => setReceiverAddress(e.target.value)}
+          className="input input-bordered w-full max-w-xs"
+        />
+        <button
+          onClick={call}
+          disabled={isLoading}
+          className="btn btn-accent text-base-100"
+        >
+          Add Receiver
+        </button>
     </div>
   );
 }

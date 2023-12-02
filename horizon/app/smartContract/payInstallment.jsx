@@ -3,7 +3,6 @@ import Horizon_ABI from "../contracts_abi/Horizon.json";
 import DrawDate from "./drawDate";
 import PaymentDeadline from "./paymentDeadline";
 import { BigNumber } from "ethers";
-import { Mumbai } from "@thirdweb-dev/chains";
 
 const contractAddress = "0x57F4E779e346C285b2b4B6A342F01c471dcf224d";
 const stablecoin = "0xA372e43b968AB1Cbf921dC198a8B6dD831cEEf56";
@@ -49,7 +48,6 @@ export default function PayInstallment({ titleId, contractId, titleData }) {
       <div className="mt-5">
         <Web3Button
           contractAddress={contractAddress}
-          activeChain={Mumbai}
           onClick={call}
         >
           {isLoading ? "Processing..." : "Pay Installment"}

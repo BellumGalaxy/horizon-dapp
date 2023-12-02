@@ -1,5 +1,4 @@
 "use client";
-import ThirdwebProviderApp from "../components/ThirdWebProvider";
 import MyCollapse from "../components/Collapse";
 import {
   CreateT,
@@ -15,7 +14,6 @@ const Administration = () => {
   return (
     <>
     <div className="space-y-3">
-      <ThirdwebProviderApp>
         <MyCollapse title="Create a New Title">
           <CreateT />
         </MyCollapse>
@@ -37,7 +35,6 @@ const Administration = () => {
         <MyCollapse title="Poly Network Receiver">
           <AddPolyReceiver />
         </MyCollapse>
-      </ThirdwebProviderApp>
     </div>
     </>
   );

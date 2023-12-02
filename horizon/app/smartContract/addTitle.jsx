@@ -1,6 +1,5 @@
 import { Web3Button, useContract, useContractWrite } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
-import { Mumbai } from "@thirdweb-dev/chains";
 
 const contractAddress = "0xA40248f23B9a587F90827746E79AF361aDFb3844";
 
@@ -49,7 +48,6 @@ export default function AddTitle({ titleId, contractId }) {
       <div className="mt-5">
         <Web3Button
           contractAddress={contractAddress}
-          activeChain={Mumbai}
           onClick={call}
         >
           {isLoading ? "Processing..." : "Add Collateral"}

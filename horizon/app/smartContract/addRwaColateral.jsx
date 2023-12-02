@@ -1,6 +1,5 @@
 import { Web3Button, useContract, useContractWrite } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
-import { Mumbai } from "@thirdweb-dev/chains";
 
 const contractAddress = "0x57F4E779e346C285b2b4B6A342F01c471dcf224d";
 
@@ -25,7 +24,6 @@ export default function AddRWA({ idTitle, contractId }) {
       <h2 className="text-center">Do you want to add an RWA?</h2>
       <Web3Button
         contractAddress={contractAddress}
-        activeChain={Mumbai}
         onClick={call}
       >
         {isLoading ? "Processing..." : "Add Collateral"}

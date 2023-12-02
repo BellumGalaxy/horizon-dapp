@@ -1,30 +1,26 @@
 import { useContract, useContractWrite } from "@thirdweb-dev/react";
 import HorizonR_ABI from "../contracts_abi/HorizonFujiR.json";
-import ThirdwebProviderApp from "../components/ThirdWebProvider";
-import { AvalancheFuji } from "@thirdweb-dev/chains";
 
-export default function VerifyColateralValue() {
+export default function GetColateralPriceF() {
   const { _format, contractName, sourceName, abi } = HorizonR_ABI;
   const { contract } = useContract(
     "0xe5121F551333DD569602E82483641D8ad0D93718",
     abi
   );
-  const { mutateAsync: verifyColateralValue, isLoading } = useContractWrite(
+  const { mutateAsync: getColateralPrice, isLoading } = useContractWrite(
     contract,
-    "verifyColateralValue"
+    "getColateralPrice"
   );
 
   const call = async () => {
     try {
-      const data = await verifyColateralValue({
-        args: [_titleId, _contractId, _drawNumber, _rwaId, args],
-      });
+      const data = await getColateralPrice({ args: [{ args }] });
       console.info("contract call successs", data);
     } catch (err) {
       console.error("contract call failure", err);
     }
   };
   return (
-      <h1>VerifyColateralValue</h1>
-  )
+      <h1>GetColateralPrice</h1>
+  );
 }

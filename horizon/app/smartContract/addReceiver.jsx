@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useContract, useContractWrite } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
-import ThirdwebProviderApp from "../components/ThirdWebProvider";
-import { AvalancheFuji } from "@thirdweb-dev/chains";
 
 export default function AddFujiReceiver() {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
