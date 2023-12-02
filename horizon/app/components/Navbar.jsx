@@ -2,9 +2,10 @@
 import Link from "next/link";
 import Connect from "./WalletConnect";
 import { useAddress, useContract, useContractRead } from "@thirdweb-dev/react";
-import Horizon_ABI from "../contracts_abi/Horizon.json";
+import HorizonStaff_ABI from "../contracts_abi/HorizonStaff.json";
+import { BigNumber } from "ethers";
 
-const contractAddress = "0x57F4E779e346C285b2b4B6A342F01c471dcf224d";
+const contractAddress = "0x3547951AAA367094AFABcaE24f123473fF502bFa";
 
 const links = [
   { href: "/allproducts", label: "Products" },
@@ -15,25 +16,30 @@ const links = [
 ];
 
 const Navbar = () => {
-  const { _format, contractName, sourceName, abi } = Horizon_ABI;
+  const { _format, contractName, sourceName, abi } = HorizonStaff_ABI;
   const address = useAddress();
   const { contract } = useContract(contractAddress, abi);
-  const { data: owner } = useContractRead(contract, "owner");
+  const { data } = useContractRead(contract, "staff", [address]);
 
-  console.log(owner);
+  const convertBigNumbers = (bigNumbers) => {
+    return bigNumbers.map((bigNumber) =>
+      BigNumber.isBigNumber(bigNumber) ? bigNumber.toString() : bigNumber
+    );
+  };
 
-  const isOwner =
-    address && owner && address.toLowerCase() === owner.toLowerCase();
+  const readableData = data ? convertBigNumbers(Object.values(data)) : [];
 
-   const userLinks = links.filter((link) => {
-     if (link.href === "/myproducts") {
-       return address;
-     }
-     if (link.href === "/adm") {
-       return isOwner;
-     }
-     return true;
-   });
+  const isAdm = readableData[1];
+
+  const userLinks = links.filter((link) => {
+    if (link.href === "/myproducts") {
+      return address;
+    }
+    if (link.href === "/adm") {
+       return isAdm;
+    }
+    return true;
+  });
 
   return (
     <nav className="bg-base-300 py-1">

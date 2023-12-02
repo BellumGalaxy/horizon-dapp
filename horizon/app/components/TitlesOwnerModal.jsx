@@ -1,11 +1,10 @@
 "use client";
 import TitlesSold from "../smartContract/titlesSold";
 import PayInstallment from "../smartContract/payInstallment";
-import AddRWA from "../smartContract/addRwaColateral";
 import AddTitle from "../smartContract/addTitle";
-import AddCollateralF from "../smartContract/addColateralF";
 import { useState } from "react";
 import Link from "next/link";
+import CollateralRub from "../myproducts/addColateral/page";
 
 const TitlesOwnerModal = ({ titleId, contractId }) => {
   const [titleData, setTitleData] = useState(null);
@@ -34,6 +33,7 @@ const TitlesOwnerModal = ({ titleId, contractId }) => {
           <button className="btn-accent text-base-100">close</button>
         </form>
       </dialog>
+
       <button
         className="btn btn-accent text-base-100"
         onClick={() => document.getElementById("my_modal_2").showModal()}
@@ -48,14 +48,26 @@ const TitlesOwnerModal = ({ titleId, contractId }) => {
           <button className="btn-accent text-base-100">close</button>
         </form>
       </dialog>
-      <Link href="/myproducts/addrwa">
-        <button
-          className="btn btn-accent text-base-100"
-          onClick={() => document.getElementById("my_modal_3").showModal()}
-        >
-          Colateral RWA
-        </button>
-      </Link>
+
+      <button
+        className="btn btn-accent text-base-100"
+        onClick={() => document.getElementById("my_modal_3").showModal()}
+      >
+        Colateral RWA
+      </button>
+      <dialog id="my_modal_3" className="modal">
+        <div className="modal-box">
+          <CollateralRub
+            titleId={titleId}
+            contractId={contractId}
+            titleData={titleData}
+          />
+        </div>
+        <form method="dialog" className="modal-backdrop">
+          <button className="btn-accent text-base-100">close</button>
+        </form>
+      </dialog>
+
       <button
         className="btn btn-accent text-base-100"
         onClick={() => document.getElementById("my_modal_4").showModal()}

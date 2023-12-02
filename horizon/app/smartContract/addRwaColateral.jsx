@@ -14,7 +14,6 @@ export default function AddRWA({ idTitle, contractId }) {
 
   return (
     <div>
-      <h2 className="text-center">Do you want to add an RWA?</h2>
       <Web3Button
         contractAddress={contractAddress}
         contractAbi={abi}

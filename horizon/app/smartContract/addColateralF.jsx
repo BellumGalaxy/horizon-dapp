@@ -42,10 +42,9 @@ export default function AddCollateralF({ titleId, contractId, titleData }) {
   return (
     <ThirdwebProvider activeChain={AvalancheFuji}>
       <div>
-        <h2 className="text-center">Enter your RWA identifier</h2>
         <input
           type="text"
-          placeholder="Type here"
+          placeholder="Enter your RWA identifier"
           className="input input-bordered w-full max-w-xs m-2"
           value={rwaId}
           onChange={handleRwaIdChange}

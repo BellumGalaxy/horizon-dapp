@@ -78,12 +78,16 @@ const MyContractsTable = ({ data }) => {
             <td className="text-center">{readableData[10]}</td>
           </tr>
           <tr>
-            <td>Your Title Status:</td>
+            <td>Your Colateral RWA Address:</td>
             <td className="text-center">{readableData[11]}</td>
           </tr>
           <tr>
-            <td>Withdraw:</td>
+            <td>Your Title Status:</td>
             <td className="text-center">{readableData[12]}</td>
+          </tr>
+          <tr>
+            <td>Withdraw:</td>
+            <td className="text-center">{readableData[13]}</td>
           </tr>
         </tbody>
       </table>

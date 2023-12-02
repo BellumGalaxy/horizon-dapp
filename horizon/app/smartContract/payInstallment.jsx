@@ -20,7 +20,7 @@ export default function PayInstallment({ titleId, contractId, titleData }) {
       BigNumber.isBigNumber(bigNumber) ? bigNumber.toString() : bigNumber
     );
   };
-
+  
   const readableData = titleData
     ? convertBigNumbers(Object.values(titleData))
     : [];
