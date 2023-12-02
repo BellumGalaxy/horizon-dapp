@@ -10,7 +10,7 @@ const stablecoin = "0xA372e43b968AB1Cbf921dC198a8B6dD831cEEf56";
 export default function PayInstallment({ titleId, contractId, titleData }) {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
   const { contract } = useContract(contractAddress, abi);
-  const { mutateAsync: payInstallment, isLoading } = useContractWrite(
+  const { mutateAsync, isLoading } = useContractWrite(
     contract,
     "payInstallment"
   );
@@ -25,16 +25,6 @@ export default function PayInstallment({ titleId, contractId, titleData }) {
     ? convertBigNumbers(Object.values(titleData))
     : [];
 
-  const call = async () => {
-    try {
-      const data = await payInstallment({
-        args: [titleId, contractId, stablecoin],
-      });
-      console.info("contract call successs", data);
-    } catch (err) {
-      console.error("contract call failure", err);
-    }
-  };
   return (
     <div>
       <DrawDate
@@ -48,7 +38,14 @@ export default function PayInstallment({ titleId, contractId, titleData }) {
       <div className="mt-5">
         <Web3Button
           contractAddress={contractAddress}
-          onClick={call}
+          contractAbi={abi}
+          action={() =>
+            mutateAsync({
+              args: [titleId, contractId, stablecoin],
+            })
+          }
+          onSuccess={(result) => console.log(result)}
+          onError={(error) => console.log(error)}
         >
           {isLoading ? "Processing..." : "Pay Installment"}
         </Web3Button>

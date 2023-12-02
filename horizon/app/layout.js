@@ -2,7 +2,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";import {
-  ChainId,
   metamaskWallet,
   coinbaseWallet,
   walletConnect,
@@ -10,17 +9,18 @@ import Navbar from "./components/Navbar";import {
   embeddedWallet,
   ThirdwebProvider,
 } from "@thirdweb-dev/react";
+import { AvalancheFuji, Mumbai } from "@thirdweb-dev/chains";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
-  const supportedChains = [ChainId.Mumbai, ChainId.AvalancheFujiTestnet];
+  const supportedChains = [Mumbai, AvalancheFuji];
 
   return (
     <html lang="en">
       <body className={inter.className}>
         <ThirdwebProvider
-          desiredChainId={ChainId.Mumbai}
+          desiredChainId={Mumbai}
           supportedChains={supportedChains}
           supportedWallets={[
             metamaskWallet({ recommended: true }),

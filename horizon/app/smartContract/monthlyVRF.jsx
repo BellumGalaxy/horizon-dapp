@@ -1,27 +1,17 @@
 import { useState } from "react";
-import { useContract, useContractWrite } from "@thirdweb-dev/react";
+import { useContract, useContractWrite, Web3Button } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
+
+const contractAddress  = "0x57F4E779e346C285b2b4B6A342F01c471dcf224d"
 
 export default function CallVRF() {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
   const [titleId, setTitleId] = useState("");
-  const { contract } = useContract(
-    "0x57F4E779e346C285b2b4B6A342F01c471dcf224d",
-    abi
-  );
-  const { mutateAsync: monthlyVRFWinner, isLoading } = useContractWrite(
+  const { contract } = useContract(contractAddress, abi);
+  const { mutateAsync, isLoading } = useContractWrite(
     contract,
     "monthlyVRFWinner"
   );
-
-  const call = async () => {
-    try {
-      const data = await monthlyVRFWinner({ args: [_idTitle] });
-      console.info("contract call successs", data);
-    } catch (err) {
-      console.error("contract call failure", err);
-    }
-  };
 
   return (
     <div className="space-x-3">
@@ -32,13 +22,20 @@ export default function CallVRF() {
         onChange={(e) => setTitleId(e.target.value)}
         className="input input-bordered w-full max-w-xs"
       />
-      <button
-        onClick={call}
-        disabled={isLoading}
-        className="btn btn-accent text-base-100"
+      <Web3Button
+        contractAddress={contractAddress}
+        contractAbi={abi}
+        action={() =>
+          mutateAsync({
+            args: [_idTitle],
+          })
+        }
+        disable={isLoading}
+        onSuccess={(result) => alert("Success!")}
+        onError={(error) => console.log(error)}
       >
         Call Chainlink VRF
-      </button>
+      </Web3Button>
     </div>
   );
 }

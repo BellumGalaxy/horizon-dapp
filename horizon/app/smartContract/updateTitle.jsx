@@ -1,27 +1,20 @@
 import { useState } from "react";
-import { useContract, useContractWrite } from "@thirdweb-dev/react";
+import { useContract, useContractWrite, Web3Button } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
+
+const contractAddress = "0x57F4E779e346C285b2b4B6A342F01c471dcf224d";
 
 export default function UpdateTitle() {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
   const [titleId, setTitleId] = useState("");
   const { contract } = useContract(
-    "0x57F4E779e346C285b2b4B6A342F01c471dcf224d",
+    contractAddress,
     abi
   );
   const { mutateAsync: updateTitleStatus, isLoading } = useContractWrite(
     contract,
     "updateTitleStatus"
   );
-
-  const call = async () => {
-    try {
-      const data = await updateTitleStatus({ args: [_titleId] });
-      console.info("contract call successs", data);
-    } catch (err) {
-      console.error("contract call failure", err);
-    }
-  };
 
   return (
     <div className="space-x-3">
@@ -32,13 +25,20 @@ export default function UpdateTitle() {
         onChange={(e) => setTitleId(e.target.value)}
         className="input input-bordered w-full max-w-xs"
       />
-      <button
-        onClick={call}
-        disabled={isLoading}
-        className="btn btn-accent text-base-100"
+      <Web3Button
+        contractAddress={contractAddress}
+        contractAbi={abi}
+        action={() =>
+          mutateAsync({
+            args: [titleId],
+          })
+        }
+        disable={isLoading}
+        onSuccess={(result) => alert("Success!")}
+        onError={(error) => console.log(error)}
       >
         Update Title Status
-      </button>
+      </Web3Button>
     </div>
   );
 }
