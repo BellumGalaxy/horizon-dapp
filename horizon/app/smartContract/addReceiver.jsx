@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { useContract, useContractWrite, Web3Button } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";

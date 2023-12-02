@@ -1,8 +1,9 @@
+"use client";
 import { useState } from "react";
 import { useContract, useContractWrite, Web3Button } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
 
-const contractAddress  = "0x57F4E779e346C285b2b4B6A342F01c471dcf224d"
+const contractAddress = "0x57F4E779e346C285b2b4B6A342F01c471dcf224d";
 
 export default function CallVRF() {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;

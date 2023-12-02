@@ -6,26 +6,10 @@ const contractAddress = "0xA40248f23B9a587F90827746E79AF361aDFb3844";
 export default function AddTitle({ titleId, contractId }) {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
   const { contract } = useContract(contractAddress, abi);
-  const { mutateAsync: addTitleAsColateral, isLoading } = useContractWrite(
+  const { mutateAsync, isLoading } = useContractWrite(
     contract,
     "addTitleAsColateral"
   );
-
-  const call = async () => {
-    try {
-      const data = await addTitleAsColateral({
-        args: [
-          titleId,
-          contractId,
-          _idOfColateralTitle,
-          _idOfColateralContract,
-        ],
-      });
-      console.info("contract call successs", data);
-    } catch (err) {
-      console.error("contract call failure", err);
-    }
-  };
 
   return (
     <div>
@@ -48,7 +32,20 @@ export default function AddTitle({ titleId, contractId }) {
       <div className="mt-5">
         <Web3Button
           contractAddress={contractAddress}
-          onClick={call}
+          contractAbi={abi}
+          action={() =>
+            mutateAsync({
+              args: [
+                titleId,
+                contractId,
+                _idOfCollateralTitle,
+                _idOfCollateralContract,
+              ],
+            })
+          }
+          disable={isLoading}
+          onSuccess={(result) => console.log(result)}
+          onError={(error) => console.log(error)}
         >
           {isLoading ? "Processing..." : "Add Collateral"}
         </Web3Button>

@@ -1,9 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import AdministrationPoly from "./AdministrationPoly";
-import AdministrationAvax from "./AdministrationAvax";
+import { AddCollateralF, AddRWA } from "@/app/smartContract";
 
-const Administration = () => {
+const CollateralRub = () => {
   const [isMumbai, setIsMumbai] = useState(true);
 
   const toggleNetwork = () => {
@@ -11,8 +10,8 @@ const Administration = () => {
   };
 
   return (
-    <main>
-      {isMumbai ? <AdministrationPoly /> : <AdministrationAvax />}
+    <div>
+      {isMumbai ? <AddRWA /> : <AddCollateralF />}
       <div>
         <label className="swap">
           <input type="checkbox" onChange={toggleNetwork} checked={isMumbai} />
@@ -20,7 +19,9 @@ const Administration = () => {
           <div className="swap-off">Fuji</div>
         </label>
       </div>
-    </main>
+
+      
+    </div>
   );
 };
-export default Administration;
+export default CollateralRub;

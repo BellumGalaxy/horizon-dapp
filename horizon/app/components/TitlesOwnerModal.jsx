@@ -5,6 +5,7 @@ import AddRWA from "../smartContract/addRwaColateral";
 import AddTitle from "../smartContract/addTitle";
 import AddCollateralF from "../smartContract/addColateralF";
 import { useState } from "react";
+import Link from "next/link";
 
 const TitlesOwnerModal = ({ titleId, contractId }) => {
   const [titleData, setTitleData] = useState(null);
@@ -47,32 +48,14 @@ const TitlesOwnerModal = ({ titleId, contractId }) => {
           <button className="btn-accent text-base-100">close</button>
         </form>
       </dialog>
-      <button
-        className="btn btn-accent text-base-100"
-        onClick={() => document.getElementById("my_modal_3").showModal()}
-      >
-        Colateral RWA
-      </button>
-      <dialog id="my_modal_3" className="modal">
-        <div className="modal-box">
-          <div className="flex w-full">
-            <div className="grid h-40 flex-grow card bg-base-300 rounded-box place-items-center">
-              <AddRWA titleId={titleId} contractId={contractId} />
-            </div>
-            <div className="divider divider-horizontal">OR</div>
-            <div className="grid h-40 flex-grow card bg-base-300 rounded-box place-items-center">
-              <AddCollateralF
-                titleId={titleId}
-                contractId={contractId}
-                titleData={titleData}
-              />
-            </div>
-          </div>
-        </div>
-        <form method="dialog" className="modal-backdrop">
-          <button className="btn-accent text-base-100">close</button>
-        </form>
-      </dialog>
+      <Link href="/myproducts/addrwa">
+        <button
+          className="btn btn-accent text-base-100"
+          onClick={() => document.getElementById("my_modal_3").showModal()}
+        >
+          Colateral RWA
+        </button>
+      </Link>
       <button
         className="btn btn-accent text-base-100"
         onClick={() => document.getElementById("my_modal_4").showModal()}
