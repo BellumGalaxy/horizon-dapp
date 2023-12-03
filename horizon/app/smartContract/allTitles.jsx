@@ -3,8 +3,6 @@ import React, { useEffect } from "react";
 import { useContract, useContractRead } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
 import { BigNumber } from "ethers";
-import DrawDate from "./drawDate";
-import PaymentDeadline from "./paymentDeadline";
 
 const contractAddress = "0x8feb780f9152303a53f4687d0da2d89743f30e15";
 

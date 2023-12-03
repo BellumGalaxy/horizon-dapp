@@ -8,9 +8,12 @@ export default function PaymentDeadline({scheduleId, installmentNumber}) {
     "0x3547951AAA367094AFABcaE24f123473fF502bFa",
     abi
   );
+
+  const nextInstallment = parseInt(installmentNumber) + 1;
+
   const { data } = useContractRead(contract, "returnDrawDate", [
     scheduleId,
-    installmentNumber,
+    nextInstallment,
   ]);
 
   const readableTimestamp = BigNumber.isBigNumber(data)
@@ -30,7 +33,7 @@ export default function PaymentDeadline({scheduleId, installmentNumber}) {
   return (
     <div>
       <h3 className="font-bold text-lg mt-2">
-        Installment number {installmentNumber}
+        Installment number {nextInstallment}
       </h3>
       <ul className="mt-1">
         <li>Date of next payment: {date}</li>

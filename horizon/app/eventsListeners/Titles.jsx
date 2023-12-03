@@ -39,8 +39,8 @@ const Titles = () => {
           _titleValue:
             convertWeiToDollar(eventData?._titleValue?.toString()) ?? "N/A",
           _installments:
-            convertWeiToDollar(eventData?._installments?.toString()) ?? "N/A",
-          _monthlyValue: eventData?._monthlyValue?.toString() ?? "N/A",
+            eventData?._installments?.toString() ?? "N/A",
+          _monthlyValue: convertWeiToDollar(eventData?._monthlyValue?.toString()) ?? "N/A",
         };
       });
       setTitles(formattedEvents);
@@ -60,14 +60,9 @@ const Titles = () => {
     <main className="mt-5">
       {isLoading ? (
         <div className="flex justify-center items-center">
-          <div
-            className="spinner-border animate-spin inline-block w-16 h-16 border-4 rounded-full"
-            role="status"
-          >
             <span className="visually-hidden">
               <Spinner />
             </span>
-          </div>
         </div>
       ) : (
         titles.map((event, index) => (
@@ -91,7 +86,7 @@ const Titles = () => {
               </ul>
               <div className="card-actions">
                 <Link
-                  href={`/allproducts/${event._titleId}/${event._scheduleId}`}
+                  href={`/allproducts/${event._titleId}`}
                 >
                   <button className="btn btn-accent text-base-100">
                     More info

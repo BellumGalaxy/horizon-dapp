@@ -8,10 +8,10 @@ import { BigNumber } from "ethers";
 const contractAddress = "0x3547951AAA367094AFABcaE24f123473fF502bFa";
 
 const links = [
-  { href: "/allproducts", label: "Products" },
+  { href: "/allproducts", label: "Investments" },
   { href: "/events", label: "News" },
   { href: "/about", label: "About" },
-  { href: "/myproducts", label: "My Products" },
+  { href: "/myproducts", label: "My Investments" },
   { href: "/adm", label: "Administration" },
 ];
 

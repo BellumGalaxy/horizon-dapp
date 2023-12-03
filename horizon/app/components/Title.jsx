@@ -1,10 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import { AllTitles, BuyTitle } from "../smartContract";
+import { AllTitles, BuyTitle, DrawDate, PaymentDeadline } from "../smartContract";
 
-const Title = ({ titleId }) => {
+const Title = ({ titleId, scheduleId, installmentNumber }) => {
   const [withdrawType, setWithdrawType] = useState("true");
-
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl">
       <figure className="container mx-auto ml-5 justify-items-center">
@@ -13,6 +12,14 @@ const Title = ({ titleId }) => {
       <div className="card-body flex flex-col container mx-auto mt-3">
         <h2 className="card-title">Confirm the Title information</h2>
         <AllTitles titleId={titleId} />
+        <DrawDate
+          scheduleId={scheduleId}
+          installmentNumber={installmentNumber}
+        />
+        <PaymentDeadline
+          scheduleId={scheduleId}
+          installmentNumber={installmentNumber}
+        />
         <div className="form-control">
           <label className="label cursor-pointer">
             <span className="label-text">Open Withdraw</span>

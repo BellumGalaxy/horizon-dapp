@@ -12,15 +12,9 @@ export default function DrawDate({ scheduleId, installmentNumber }) {
     installmentNumber,
   ]);
 
-  const convertBigNumbers = (bigNumbers) => {
-    return bigNumbers.map((bigNumber) =>
-      BigNumber.isBigNumber(bigNumber) ? bigNumber.toString() : bigNumber
-    );
-  };
-
-  const readableData = data ? convertBigNumbers(Object.values(data)) : [];
-
-  console.log(data);
+  const readableTimestamp = BigNumber.isBigNumber(data)
+    ? data.toString()
+    : data;
 
   const convertTimestampToDate = (timestamp) => {
     if (!timestamp) {
@@ -30,7 +24,7 @@ export default function DrawDate({ scheduleId, installmentNumber }) {
     return `${date.toLocaleTimeString()} - ${date.toLocaleDateString()} `;
   };
 
-  const date = convertTimestampToDate(readableData);
+  const date = convertTimestampToDate(readableTimestamp);
 
   return (
     <div>

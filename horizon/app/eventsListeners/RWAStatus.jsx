@@ -16,7 +16,7 @@ const RWAStatus = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [event, setEvent] = useState([]);
 
-  
+  console.log(permission);
 
   return <h1>REFAZER</h1>;
 };

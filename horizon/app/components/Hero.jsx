@@ -12,19 +12,19 @@ const Hero = () => {
       <div>
         <h1 className="text-5xl mb-8 font-bold">Horizon Financial Products</h1>
         <h2 className="mb-8 font-bold">
-          Bem-vindo à Horizon: Democratizando o Acesso ao Ecossistema Web3
+          Welcome to Horizon: Democratizing Access to the Web3 Ecosystem
         </h2>
         <p className="mb-4">
-          Horizon é um protocolo DEFI inovador, projetado para simplificar e
-          tornar mais seguro o acesso ao mundo das finanças descentralizadas,
-          especialmente para pessoas de média e baixa renda. Com a Horizon, você
-          pode explorar o potencial da Web3 com confiança e transparência.
+          Horizon is an innovative DEFI protocol, designed to simplify and
+          secure access to the world of decentralized finance, especially for
+          middle and low-income individuals. With Horizon, you can explore the
+          potential of Web3 with confidence and transparency.
         </p>
         <p className="mb-4">
-          Na Horizon, estamos comprometidos em oferecer uma plataforma segura,
-          transparente e inclusiva. Nosso objetivo é abrir as portas do
-          ecossistema Web3 para todos, independentemente do seu nível de renda
-          ou conhecimento em criptomoedas.
+          At Horizon, we are committed to offering a secure, transparent, and
+          inclusive platform. Our goal is to open the doors of the Web3
+          ecosystem to everyone, regardless of their income level or knowledge
+          of cryptocurrencies.
         </p>
       </div>
       {/* Carousel */}

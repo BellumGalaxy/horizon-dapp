@@ -16,32 +16,21 @@ const AboutPage = () => {
         </div>
       </div>
       <p className="mt-6 text-lg leading-8 max-w-2xl mx-auto">
-        A Horizon representa um avanço significativo na democratização do acesso
-        ao ecossistema Web3, com um foco especial na inclusão financeira de
-        indivíduos de média e baixa renda. Ao integrar tecnologias inovadoras
-        como Chainlink VRF, CCIP, Functions e Automation, e a integração com a
-        Tabela FIPE, a Horizon estabelece um novo padrão em termos de segurança,
-        transparência e auditabilidade em operações financeiras
-        descentralizadas.
+        Horizon represents a significant advancement in democratizing access to
+        the Web3 ecosystem, with a special focus on the financial inclusion of
+        middle and low-income individuals. By integrating innovative
+        technologies such as Chainlink VRF, CCIP, Functions and Automation, and
+        the integration with the FIPE Table, Horizon establishes a new standard
+        in terms of security, transparency, and auditability in decentralized
+        financial operations.
       </p>
       <p className="mt-6 text-lg leading-8 max-w-2xl mx-auto">
-        Através da implementação de um sistema robusto de consórcios, o Horizon
-        não apenas facilita a aquisição de bens e serviços, mas também abre
-        caminho para o uso eficiente de Bens Tokenizados como garantias,
-        ampliando as possibilidades de saque e investimento para os usuários.
-        Este aspecto é particularmente revolucionário, pois alavanca o potencial
-        dos ativos digitais de uma maneira que beneficia diretamente o usuário
-        final, ao mesmo tempo em que mantém a integridade e a sustentabilidade
-        do sistema.
+        Through the implementation of a robust consortium system, Horizon not only facilitates the acquisition of goods and services but also paves the way for the efficient use of Tokenized Assets as collateral,
+        expanding the possibilities for withdrawals and investments for users.
+        This aspect is particularly revolutionary, as it leverages the potential of digital assets in a way that directly benefits the end-user while maintaining the integrity and sustainability of the system.
       </p>
       <p className="mt-6 text-lg leading-8 max-w-2xl mx-auto">
-        Além disso, a estrutura da Horizon está desenhada para evoluir e se
-        adaptar às necessidades emergentes do mercado e dos usuários. Com planos
-        futuros que incluem a criação de um mercado secundário para títulos, a
-        exploração de parcerias para rendimentos adicionais, e a expansão para
-        serviços de empréstimo e financiamento, a Horizon não é apenas uma
-        solução para o presente, mas um investimento no futuro da finança
-        descentralizada.
+        Furthermore, Horizon's structure is designed to evolve and adapt to the emerging needs of the market and users. With future plans that include the creation of a secondary market for titles, exploring partnerships for additional yields, and expanding into lending and financing services, Horizon is not just a solution for the present, but an investment in the future of decentralized finance.
       </p>
     </>
   );
