@@ -1,7 +1,7 @@
 export { default as AddCollateralF } from "./addColateralF";
 export { default as AddFujiReceiver } from "./addReceiver";
 export { default as AddPolyReceiver } from "./addReceiverF";
-export { default as AddRWA } from "./addRwaColateral";
+export { default as AddRWA } from "./addRwaCollateral";
 export { default as AddTitle } from "./addTitle";
 export { default as BuyTitle } from "./buyTitle";
 export { default as CreateT } from "./createTitle";

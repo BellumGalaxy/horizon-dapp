@@ -29,11 +29,11 @@ export default function PayInstallment({ titleId, contractId, titleData }) {
     <div>
       <DrawDate
         scheduleId={readableData[1]}
-        installmentNumber={parseInt(readableData[7])}
+        installmentNumber={parseInt(readableData[3])}
       />
       <PaymentDeadline
         scheduleId={readableData[1]}
-        installmentNumber={parseInt(readableData[7]) + 1}
+        installmentNumber={parseInt(readableData[3])}
       />
       <div className="mt-5">
         <Web3Button
