@@ -1,12 +1,20 @@
 "use client";
 import MyCollapse from "@/app/components/Collapse";
-import { CallVRF, SelectWinner, UpdateTitle, VerifyLatePayment } from "@/app/smartContract";
+import { AllTitles, CallVRF, DrawDate, PaymentDeadline, SelectWinner, UpdateTitle, VerifyLatePayment } from "@/app/smartContract";
 import TitleAmercement from "@/app/smartContract/TitleAmercement";
 
 const ManageTitles = ({ params }) => {
   const titleId = params.id[0];
+
   return (
     <div className="space-y-3">
+      <MyCollapse title="More info about Title">
+        <AllTitles titleId={titleId} />
+
+        <DrawDate />
+
+        <PaymentDeadline />
+      </MyCollapse>
       <MyCollapse title="Call Chainlink VRF">
         <CallVRF titleId={titleId} />
       </MyCollapse>

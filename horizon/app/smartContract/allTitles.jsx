@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useContract, useContractRead } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
 import { BigNumber } from "ethers";
@@ -8,7 +8,7 @@ import PaymentDeadline from "./paymentDeadline";
 
 const contractAddress = "0x8feb780f9152303a53f4687d0da2d89743f30e15";
 
-export default function AllTitles({ titleId }) {
+export default function AllTitles({ titleId, onReceiveData }) {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
   const { contract } = useContract(contractAddress, abi);
   const { data, isLoading } = useContractRead(contract, "allTitles", [titleId]);
@@ -33,6 +33,9 @@ export default function AllTitles({ titleId }) {
     const etherValue = wei;
     return parseFloat(etherValue) / 10 ** 18;
   };
+
+  const scheduleId = readableData[2];
+  const installmentNumber = readableData[3];
 
   readableData[0] = convertTimestampToDate(readableData[0]);
   readableData[1] = convertTimestampToDate(readableData[1]);
@@ -59,16 +62,6 @@ export default function AllTitles({ titleId }) {
           <li>Installment Value: $ {readableData[6]}.00</li>
         </ul>
       </div>
-
-      <DrawDate
-        _scheduleId={readableData[2]}
-        _installmentNumber={readableData[3]}
-      />
-
-      <PaymentDeadline
-        _scheduleId={readableData[2]}
-        _installmentNumber={parseInt(readableData[3]) + 1}
-      />
     </main>
   );
 }

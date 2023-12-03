@@ -9,7 +9,7 @@ export default function AddFujiReceiver() {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
   const [receiverAddress, setReceiverAddress] = useState("");
   const { contract } = useContract(contractAddress, abi);
-  const { mutateAsync: addReceiver, isLoading } = useContractWrite(
+  const { mutateAsync, isLoading } = useContractWrite(
     contract,
     "addReceiver"
   );

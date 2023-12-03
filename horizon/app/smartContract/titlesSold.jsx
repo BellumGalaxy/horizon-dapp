@@ -82,7 +82,7 @@ const TitlesSold = ({ titleId, contractId, onReceiveData }) => {
   return (
     <div>
       <div>
-        {isLoading ? <p>Carregando...</p> : <ul>{renderDataList()}</ul>}
+        {isLoading ? <p>Loading...</p> : <ul>{renderDataList()}</ul>}
       </div>
     </div>
   );

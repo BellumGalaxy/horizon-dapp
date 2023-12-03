@@ -90,7 +90,9 @@ const Titles = () => {
                 <li>Monthly Value: ${event._monthlyValue}</li>
               </ul>
               <div className="card-actions">
-                <Link href={`/allproducts/${event._titleId}`}>
+                <Link
+                  href={`/allproducts/${event._titleId}/${event._scheduleId}`}
+                >
                   <button className="btn btn-accent text-base-100">
                     More info
                   </button>
