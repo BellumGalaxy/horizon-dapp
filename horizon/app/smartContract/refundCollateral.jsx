@@ -4,7 +4,7 @@ import Horizon_ABI from "../contracts_abi/Horizon.json";
 export default function RefundCollateral() {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
   const { contract } = useContract(
-    "0x57F4E779e346C285b2b4B6A342F01c471dcf224d",
+    "0x8fEB780f9152303a53F4687D0da2d89743F30E15",
     abi
   );
   const { mutateAsync, isLoading } = useContractWrite(

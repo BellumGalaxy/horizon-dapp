@@ -3,16 +3,16 @@ import { useState } from "react";
 import { useContract, useContractWrite, Web3Button } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
 
-const contractAddress = "0x57F4E779e346C285b2b4B6A342F01c471dcf224d";
+const contractAddress = "0x8fEB780f9152303a53F4687D0da2d89743F30E15";
 
 export default function CallVRF() {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
-  const [titleId, setTitleId] = useState("");
   const { contract } = useContract(contractAddress, abi);
   const { mutateAsync, isLoading } = useContractWrite(
     contract,
     "monthlyVRFWinner"
   );
+  const [titleId, setTitleId] = useState("");
 
   return (
     <div className="space-x-3">
@@ -28,11 +28,11 @@ export default function CallVRF() {
         contractAbi={abi}
         action={() =>
           mutateAsync({
-            args: [_idTitle],
+            args: [titleId],
           })
         }
         disable={isLoading}
-        onSuccess={(result) => alert("Success!")}
+        onSuccess={(result) => console.log(result)}
         onError={(error) => console.log(error)}
       >
         Call Chainlink VRF

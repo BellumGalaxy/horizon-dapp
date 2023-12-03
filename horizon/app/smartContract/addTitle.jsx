@@ -1,7 +1,7 @@
 import { Web3Button, useContract, useContractWrite } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
 
-const contractAddress = "0xA40248f23B9a587F90827746E79AF361aDFb3844";
+const contractAddress = "0x8feb780f9152303a53f4687d0da2d89743f30e15";
 
 export default function AddTitle({ titleId, contractId }) {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;

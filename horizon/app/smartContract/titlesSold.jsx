@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useContract, useContractRead } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
 
-const contractAddress = "0x57F4E779e346C285b2b4B6A342F01c471dcf224d";
+const contractAddress = "0x8fEB780f9152303a53F4687D0da2d89743F30E15";
 
 const TitlesSold = ({ titleId, contractId, onReceiveData }) => {
   const { abi } = Horizon_ABI;

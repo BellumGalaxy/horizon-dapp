@@ -9,7 +9,7 @@ import Horizon_ABI from "../contracts_abi/Horizon.json";
 import Spinner from "../components/Spinner";
 import Link from "next/link";
 
-const contractAddress = "0x57F4E779e346C285b2b4B6A342F01c471dcf224d";
+const contractAddress = "0x8fEB780f9152303a53F4687D0da2d89743F30E15";
 
 export default function TitleOwners() {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
@@ -18,7 +18,6 @@ export default function TitleOwners() {
   const { topics, data: events } = useContractEvents(contract, "NewTitleSold");
   const [titles, setTitles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     setIsLoading(true);
     if (events && events.length > 0) {
@@ -28,7 +27,7 @@ export default function TitleOwners() {
       const formattedEvents = filteredEvents.map((event) => {
         const eventData = event.data;
         return {
-          titleId: eventData?.titleId?.toString() ?? "N/A",
+          _titleId: eventData?._titleId?.toString() ?? "N/A",
           _contractId: eventData?._contractId?.toString() ?? "N/A",
           _owner: eventData?._owner?.toString() ?? "N/A",
         };
@@ -76,15 +75,15 @@ export default function TitleOwners() {
                     We were protecting your investments while you weren't
                     around.
                   </p>
-                  <h2 className="card-title">Title ID: {event.titleId}</h2>
+                  <h2 className="card-title">Title ID: {event._titleId}</h2>
                   <ul>
-                    <li>Title Id: {event.titleId}</li>
+                    <li>Title Id: {event._titleId}</li>
                     <li>Contract Id: {event._contractId}</li>
                     <li>Owner: {event._owner}</li>
                   </ul>
                 </div>
                 <Link
-                  href={`/myproducts/${event.titleId}/${event._contractId}`}
+                  href={`/myproducts/${event._titleId}/${event._contractId}`}
                 >
                   <button className="btn btn-wide capitalize btn-accent text-base-100">
                     Investment Management

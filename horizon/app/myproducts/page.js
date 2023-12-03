@@ -1,5 +1,5 @@
 "use client";
-import TitleOwners from "../smartContract/titleOwners";
+import TitleOwners from "../eventsListeners/titleOwners";
 
 const MyProducts = () => {
   return (

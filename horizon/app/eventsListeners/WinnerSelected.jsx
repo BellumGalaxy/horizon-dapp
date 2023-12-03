@@ -2,8 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useContract, useContractEvents } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
-import Spinner from "./Spinner";
-import { ethers } from "ethers";
+import Spinner from "../components/Spinner";
 
 const formatDate = (date) => {
   return new Intl.DateTimeFormat("en-US", {
@@ -16,13 +15,13 @@ const formatDate = (date) => {
   }).format(date);
 };
 
-const PrizesPaid = () => {
+const WinnerSelected = () => {
   const { abi } = Horizon_ABI;
   const { contract } = useContract(
-    "0x57F4E779e346C285b2b4B6A342F01c471dcf224d",
+    "0x8fEB780f9152303a53F4687D0da2d89743F30E15",
     abi
   );
-  const { data: events } = useContractEvents(contract, "MonthlyWinnerPaid");
+  const { data: events } = useContractEvents(contract, "MonthlyWinnerSelected");
   const [titles, setTitles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -38,9 +37,10 @@ const PrizesPaid = () => {
           _date: formattedDate,
           _idTitle: eventData?._idTitle?.toString() ?? "N/A",
           _drawNumber: eventData?._drawNumber?.toString() ?? "N/A",
+          _randomValue: eventData?._randomValue?.toString() ?? "N/A",
+          _selectedContractId:
+            eventData?._selectedContractId?.toString() ?? "N/A",
           _winner: eventData?._winner?.toString() ?? "N/A",
-          _titleValue:
-            convertWeiToDollar(eventData?._titleValue) ?? "N/A",
         };
       });
       setTitles((prevTitles) => {
@@ -55,12 +55,6 @@ const PrizesPaid = () => {
     }
     setIsLoading(false);
   }, [events]);
-
-  const convertWeiToDollar = (wei) => {
-    const ether = ethers.utils.formatEther(wei || "0");
-    const dollarValue = parseFloat(ether);
-    return dollarValue.toFixed(2);
-  };
 
   return (
     <main className="mt-5">
@@ -78,8 +72,9 @@ const PrizesPaid = () => {
                   <th>Date</th>
                   <th>Title ID</th>
                   <th>Draw Number</th>
-                  <th>Winner</th>
-                  <th>Prize Value</th>
+                  <th>Random Value</th>
+                  <th>Selected ContractID</th>
+                  <th>Winner Address</th>
                 </tr>
               </thead>
               <tbody>
@@ -89,8 +84,9 @@ const PrizesPaid = () => {
                     <td>{event._date}</td>
                     <th>{event._idTitle}</th>
                     <td>{event._drawNumber}</td>
+                    <td>{event._randomValue}</td>
+                    <td>{event._selectedContractId}</td>
                     <td>{event._winner}</td>
-                    <td>{event._titleValue}</td>
                   </tr>
                 ))}
               </tbody>
@@ -102,4 +98,4 @@ const PrizesPaid = () => {
   );
 };
 
-export default PrizesPaid;
+export default WinnerSelected;

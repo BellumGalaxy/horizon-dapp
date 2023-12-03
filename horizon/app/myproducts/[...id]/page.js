@@ -8,7 +8,7 @@ import { useState } from "react";
 const InvestmentsManagement = ({ params }) => {
   const titleId = params.id[0];
   const contractId = params.id[1];
-
+  console.log(params);
   const [titleData, setTitleData] = useState(null);
 
   const handleTitleData = (data) => {

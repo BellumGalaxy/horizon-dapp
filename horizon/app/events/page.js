@@ -1,5 +1,5 @@
-import WinnerSelected from "../components/WinnerSelected";
-import PrizesPaid from "../components/PrizesPaid";
+import WinnerSelected from "../eventsListeners/WinnerSelected";
+import PrizesPaid from "../eventsListeners/PrizesPaid";
 
 const News = () => {
   return (

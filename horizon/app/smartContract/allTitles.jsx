@@ -6,12 +6,11 @@ import { BigNumber } from "ethers";
 import DrawDate from "./drawDate";
 import PaymentDeadline from "./paymentDeadline";
 
+const contractAddress = "0x8feb780f9152303a53f4687d0da2d89743f30e15";
+
 export default function AllTitles({ titleId }) {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
-  const { contract } = useContract(
-    "0x57F4E779e346C285b2b4B6A342F01c471dcf224d",
-    abi
-  );
+  const { contract } = useContract(contractAddress, abi);
   const { data, isLoading } = useContractRead(contract, "allTitles", [titleId]);
 
   const convertBigNumbers = (bigNumbers) => {

@@ -4,7 +4,7 @@ import DrawDate from "./drawDate";
 import PaymentDeadline from "./paymentDeadline";
 import { BigNumber } from "ethers";
 
-const contractAddress = "0x57F4E779e346C285b2b4B6A342F01c471dcf224d";
+const contractAddress = "0x8fEB780f9152303a53F4687D0da2d89743F30E15";
 const stablecoin = "0xA372e43b968AB1Cbf921dC198a8B6dD831cEEf56";
 
 export default function PayInstallment({ titleId, contractId, titleData }) {

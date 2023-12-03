@@ -5,7 +5,7 @@ import {
   AddRWA,
   VerifyCollateralValue,
 } from "@/app/smartContract";
-import RWAStatus from "./RWAStatus";
+import RWAStatus from "../eventsListeners/RWAStatus";
 
 const CollateralHub = ({ titleId, contractId, titleData }) => {
   const [isMumbai, setIsMumbai] = useState(true);

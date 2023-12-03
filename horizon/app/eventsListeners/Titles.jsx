@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useContract, useContractEvents } from "@thirdweb-dev/react";
 import Link from "next/link";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
-import Spinner from "./Spinner";
+import Spinner from "../components/Spinner";
 import { ethers } from "ethers";
 
 const titleImages = [
@@ -16,7 +16,7 @@ const titleImages = [
 const Titles = () => {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
   const { contract } = useContract(
-    "0x57F4E779e346C285b2b4B6A342F01c471dcf224d",
+    "0x8fEB780f9152303a53F4687D0da2d89743F30E15",
     abi
   );
   const { topics, data: events } = useContractEvents(
@@ -25,6 +25,8 @@ const Titles = () => {
   );
   const [titles, setTitles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  console.log(events);
 
   useEffect(() => {
     setIsLoading(true);
@@ -36,9 +38,9 @@ const Titles = () => {
           _scheduleId: eventData?._scheduleId?.toString() ?? "N/A",
           _titleValue:
             convertWeiToDollar(eventData?._titleValue?.toString()) ?? "N/A",
-            _installments:
-              convertWeiToDollar(eventData?._installments?.toString()) ?? "N/A",
-            _monthlyValue: eventData?._monthlyValue?.toString() ?? "N/A",
+          _installments:
+            convertWeiToDollar(eventData?._installments?.toString()) ?? "N/A",
+          _monthlyValue: eventData?._monthlyValue?.toString() ?? "N/A",
         };
       });
       setTitles(formattedEvents);
@@ -48,11 +50,11 @@ const Titles = () => {
     setIsLoading(false);
   }, [events]);
 
-const convertWeiToDollar = (wei) => {
-  const ether = ethers.utils.formatEther(wei || "0");
-  const dollarValue = parseFloat(ether); 
-  return dollarValue.toFixed(2);
-};
+  const convertWeiToDollar = (wei) => {
+    const ether = ethers.utils.formatEther(wei || "0");
+    const dollarValue = parseFloat(ether);
+    return dollarValue.toFixed(2);
+  };
 
   return (
     <main className="mt-5">
@@ -67,7 +69,7 @@ const convertWeiToDollar = (wei) => {
             </span>
           </div>
         </div>
-        ) : (
+      ) : (
         titles.map((event, index) => (
           <div
             key={event._titleId}
