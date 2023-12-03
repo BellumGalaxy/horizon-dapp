@@ -6,6 +6,8 @@ import FeesModal from "../../components/FeesModal";
 import Link from "next/link";
 
 const TitleDetails = ({ params }) => {
+  console.log(params[0]);
+  console.log(params[1]);
   return (
     <main>
       <Carousel />
