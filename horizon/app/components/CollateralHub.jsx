@@ -5,6 +5,7 @@ import {
   AddRWA,
   VerifyCollateralValue,
 } from "@/app/smartContract";
+import RWAStatus from "./RWAStatus";
 
 const CollateralHub = ({ titleId, contractId, titleData }) => {
   const [isMumbai, setIsMumbai] = useState(true);
@@ -27,7 +28,11 @@ const CollateralHub = ({ titleId, contractId, titleData }) => {
           </div>
         );
       case "waitConfirmation":
-        return <div>Wait Confirmation Content</div>;
+        return (
+          <div>
+            <RWAStatus titleId={titleId} contractId={contractId} />
+          </div>
+        );
       case "verifyValue":
         return (
           <div>
