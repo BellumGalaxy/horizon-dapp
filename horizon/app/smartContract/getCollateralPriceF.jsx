@@ -9,9 +9,9 @@ export default function GetCollateralPriceF() {
     contractAddress,
     abi
   );
-  const { mutateAsync: getCollateralPrice, isLoading } = useContractWrite(
+  const { mutateAsync, isLoading } = useContractWrite(
     contract,
-    "getColateralPrice"
+    "getCollateralPrice"
   );
 
   return (
@@ -25,7 +25,7 @@ export default function GetCollateralPriceF() {
           })
         }
         disable={isLoading}
-        onSuccess={(result) => alert("Success!")}
+        onSuccess={(result) => console.log(result)}
         onError={(error) => console.log(error)}
       >
         Get Collateral Price

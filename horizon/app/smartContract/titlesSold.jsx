@@ -34,18 +34,18 @@ const TitlesSold = ({ titleId, contractId, onReceiveData }) => {
       } else if (typeof value === "boolean") {
         return value ? "Yes" : "No";
       }
-      if (index === 12) {
+      if (index === 13) {
         switch (value) {
           case 0:
             return "Status: Canceled";
           case 1:
-            return "Status: Closed";
+            return "Status: Late";
           case 2:
-            return "Status: Finalized";
+            return "Status: OnSchedule";
           case 3:
-            return "Status: Open";
+            return "Status: Withdraw";
           case 4:
-            return "Status: Waiting ";
+            return "Status: Finalized ";
         }
       }
       return value;
@@ -55,6 +55,7 @@ const TitlesSold = ({ titleId, contractId, onReceiveData }) => {
   const renderDataList = () => {
     const labels = [
       "Contract Id",
+      "Schedule",
       "Title Value",
       "Installments",
       "Monthly Value",

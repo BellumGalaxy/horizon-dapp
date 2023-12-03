@@ -15,12 +15,11 @@ const formatDate = (date) => {
   }).format(date);
 };
 
+const contractAddress = "0x8fEB780f9152303a53F4687D0da2d89743F30E15";
+
 const WinnerSelected = () => {
   const { abi } = Horizon_ABI;
-  const { contract } = useContract(
-    "0x8fEB780f9152303a53F4687D0da2d89743F30E15",
-    abi
-  );
+  const { contract } = useContract(contractAddress, abi);
   const { data: events } = useContractEvents(contract, "MonthlyWinnerSelected");
   const [titles, setTitles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

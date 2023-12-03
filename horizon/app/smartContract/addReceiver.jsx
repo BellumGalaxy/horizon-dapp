@@ -32,7 +32,7 @@ export default function AddFujiReceiver() {
           })
         }
         disable={isLoading}
-        onSuccess={(result) => alert("Success!")}
+        onSuccess={(result) => console.log(result)}
         onError={(error) => console.log(error)}
       >
         Add Receiver

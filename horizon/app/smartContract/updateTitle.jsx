@@ -5,9 +5,8 @@ import Horizon_ABI from "../contracts_abi/Horizon.json";
 
 const contractAddress = "0x8fEB780f9152303a53F4687D0da2d89743F30E15";
 
-export default function UpdateTitle() {
+export default function UpdateTitle({titleId}) {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
-  const [titleId, setTitleId] = useState("");
   const { contract } = useContract(contractAddress, abi);
   const { mutateAsync, isLoading } = useContractWrite(
     contract,
@@ -16,13 +15,6 @@ export default function UpdateTitle() {
 
   return (
     <div className="space-x-3">
-      <input
-        type="text"
-        placeholder="Title Id"
-        value={titleId}
-        onChange={(e) => setTitleId(e.target.value)}
-        className="input input-bordered w-full max-w-xs"
-      />
       <Web3Button
         contractAddress={contractAddress}
         contractAbi={abi}

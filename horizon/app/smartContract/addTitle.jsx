@@ -1,5 +1,6 @@
 import { Web3Button, useContract, useContractWrite } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
+import { useState } from "react";
 
 const contractAddress = "0x8feb780f9152303a53f4687d0da2d89743f30e15";
 
@@ -11,6 +12,9 @@ export default function AddTitle({ titleId, contractId }) {
     "addTitleAsCollateral"
   );
 
+  const [collateralTitle, setCollateralTitle] = useState("");
+  const [collateralContract, setCollateralContract] = useState("");
+
   return (
     <div>
       <div>
@@ -18,6 +22,8 @@ export default function AddTitle({ titleId, contractId }) {
         <input
           type="text"
           placeholder="Title ID"
+          value={collateralTitle}
+          onChange={(e) => setCollateralTitle(e.target.value)}
           className="input input-bordered w-full max-w-xs"
           required
         />
@@ -25,6 +31,8 @@ export default function AddTitle({ titleId, contractId }) {
         <input
           type="text"
           placeholder="Contract ID"
+          value={collateralContract}
+          onChange={(e) => setCollateralContract(e.target.value)}
           className="input input-bordered w-full max-w-xs"
           required
         />
@@ -35,12 +43,7 @@ export default function AddTitle({ titleId, contractId }) {
           contractAbi={abi}
           action={() =>
             mutateAsync({
-              args: [
-                titleId,
-                contractId,
-                _idOfCollateralTitle,
-                _idOfCollateralContract,
-              ],
+              args: [titleId, contractId, collateralTitle, collateralContract],
             })
           }
           disable={isLoading}

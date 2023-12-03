@@ -1,14 +1,14 @@
 "use client";
 import MyCollapse from "@/app/components/Collapse";
 import CollateralHub from "@/app/components/CollateralHub";
-import { AddTitle, PayInstallment } from "@/app/smartContract";
+import { AddTitle, PayInstallment, WinnerW } from "@/app/smartContract";
 import TitlesSold from "@/app/smartContract/titlesSold";
 import { useState } from "react";
 
 const InvestmentsManagement = ({ params }) => {
   const titleId = params.id[0];
   const contractId = params.id[1];
-  console.log(params);
+  
   const [titleData, setTitleData] = useState(null);
 
   const handleTitleData = (data) => {
@@ -33,6 +33,12 @@ const InvestmentsManagement = ({ params }) => {
             titleId={titleId}
             contractId={contractId}
             titleData={titleData}
+          />
+        </MyCollapse>
+        <MyCollapse title="Withdraw Investment">
+          <WinnerW
+            titleId={titleId}
+            contractId={contractId}
           />
         </MyCollapse>
         <MyCollapse title="More Infos">

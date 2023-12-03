@@ -3,11 +3,8 @@ import MyCollapse from "../components/Collapse";
 import {
   CreateT,
   AddFujiReceiver,
-  CallVRF,
-  SelectWinner,
-  UpdateTitle,
-  WinnerW,
 } from "../smartContract";
+import WithdrawFee from "../smartContract/WithdrawFee";
 
 const AdministrationPoly = () => {
   return (
@@ -16,20 +13,11 @@ const AdministrationPoly = () => {
         <MyCollapse title="Create a New Title">
           <CreateT />
         </MyCollapse>
-        <MyCollapse title="Call Chainlink VRF">
-          <CallVRF />
-        </MyCollapse>
-        <MyCollapse title="Select Winner">
-          <SelectWinner />
-        </MyCollapse>
-        <MyCollapse title="Update Titles">
-          <UpdateTitle />
-        </MyCollapse>
-        <MyCollapse title="Pay Winner">
-          <WinnerW />
-        </MyCollapse>
         <MyCollapse title="Fuji Network Receiver">
           <AddFujiReceiver />
+        </MyCollapse>
+        <MyCollapse title="Withdraw Protocol Fee">
+          <WithdrawFee />
         </MyCollapse>
       </div>
     </main>
