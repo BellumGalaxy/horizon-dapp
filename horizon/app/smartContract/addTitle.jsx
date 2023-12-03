@@ -8,28 +8,28 @@ export default function AddTitle({ titleId, contractId }) {
   const { contract } = useContract(contractAddress, abi);
   const { mutateAsync, isLoading } = useContractWrite(
     contract,
-    "addTitleAsColateral"
+    "addTitleAsCollateral"
   );
 
   return (
     <div>
       <div>
-        <h1>Enter the titleId you want to use as collateral</h1>
+        <h1>Enter the ID of the title you want to use as collateral</h1>
         <input
           type="text"
-          placeholder="Type here"
+          placeholder="Title ID"
           className="input input-bordered w-full max-w-xs"
           required
         />
-        <h1>Enter the contractId you want to use as collateral</h1>
+        <h1>Enter the ID of the contract you want to use as collateral</h1>
         <input
           type="text"
-          placeholder="Type here"
+          placeholder="Contract ID"
           className="input input-bordered w-full max-w-xs"
           required
         />
       </div>
-      <div className="mt-5">
+      <div className="mt-5 flex justify-center">
         <Web3Button
           contractAddress={contractAddress}
           contractAbi={abi}

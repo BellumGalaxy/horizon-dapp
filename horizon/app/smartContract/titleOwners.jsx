@@ -7,7 +7,7 @@ import {
 } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
 import Spinner from "../components/Spinner";
-import TitleOwnersModal from "../components/TitlesOwnerModal";
+import Link from "next/link";
 
 const contractAddress = "0x57F4E779e346C285b2b4B6A342F01c471dcf224d";
 
@@ -76,19 +76,20 @@ export default function TitleOwners() {
                     We were protecting your investments while you weren't
                     around.
                   </p>
-                  <h2 className="card-title">Title ID: {event._titleId}</h2>
+                  <h2 className="card-title">Title ID: {event.titleId}</h2>
                   <ul>
                     <li>Title Id: {event.titleId}</li>
                     <li>Contract Id: {event._contractId}</li>
                     <li>Owner: {event._owner}</li>
                   </ul>
                 </div>
-                <div className="flex flex-wrap gap-2 justify-center lg:justify-start mt-4">
-                  <TitleOwnersModal
-                    titleId={event.titleId}
-                    contractId={event._contractId}
-                  />
-                </div>
+                <Link
+                  href={`/myproducts/${event.titleId}/${event._contractId}`}
+                >
+                  <button className="btn btn-wide capitalize btn-accent text-base-100">
+                    Investment Management
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

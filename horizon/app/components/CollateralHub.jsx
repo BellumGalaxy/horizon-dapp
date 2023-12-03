@@ -1,8 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { AddCollateralF, AddRWA, VerifyCollateralValue } from "@/app/smartContract";
+import {
+  AddCollateralF,
+  AddRWA,
+  VerifyCollateralValue,
+} from "@/app/smartContract";
 
-const CollateralRub = ({ titleId, contractId, titleData }) => {
+const CollateralHub = ({ titleId, contractId, titleData }) => {
   const [isMumbai, setIsMumbai] = useState(true);
   const [activeStage, setActiveStage] = useState("createPermission");
 
@@ -27,7 +31,6 @@ const CollateralRub = ({ titleId, contractId, titleData }) => {
       case "verifyValue":
         return (
           <div>
-            {" "}
             <VerifyCollateralValue
               titleId={titleId}
               contractId={contractId}
@@ -78,4 +81,4 @@ const CollateralRub = ({ titleId, contractId, titleData }) => {
     </div>
   );
 };
-export default CollateralRub;
+export default CollateralHub;
