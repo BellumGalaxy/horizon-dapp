@@ -35,7 +35,7 @@ export default function PayInstallment({ titleId, contractId, titleData }) {
         scheduleId={readableData[1]}
         installmentNumber={parseInt(readableData[3])}
       />
-      <div className="mt-5">
+      <div className="mt-5 flex justify-center">
         <Web3Button
           contractAddress={contractAddress}
           contractAbi={abi}

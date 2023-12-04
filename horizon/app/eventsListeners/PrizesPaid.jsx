@@ -29,13 +29,10 @@ const PrizesPaid = () => {
   useEffect(() => {
     setIsLoading(true);
     if (events && events.length > 0) {
-      const now = new Date();
-      const formattedDate = formatDate(now);
-
       const newFormattedEvents = events.map((event) => {
         const eventData = event.data;
+
         return {
-          _date: formattedDate,
           _idTitle: eventData?._idTitle?.toString() ?? "N/A",
           _drawNumber: eventData?._drawNumber?.toString() ?? "N/A",
           _winner: eventData?._winner?.toString() ?? "N/A",
@@ -62,19 +59,18 @@ const PrizesPaid = () => {
   };
 
   return (
-    <main className="mt-5">
+    <main className="mt-5 w-full">
       {isLoading ? (
         <div className="flex justify-center items-center">
           <Spinner />
         </div>
       ) : (
-        <div className="card card-side bg-base-100 shadow-xl mt-5">
-          <div className="overflow-x-auto">
+        <div className="card card-side bg-base-100 shadow-xl mt-5 w-full">
+          <div className="overflow-x-auto w-full">
             <table className="table table-zebra w-full">
               {/* head */}
               <thead>
                 <tr>
-                  <th>Date</th>
                   <th>Title ID</th>
                   <th>Draw Number</th>
                   <th>Winner</th>
@@ -85,7 +81,6 @@ const PrizesPaid = () => {
                 {titles.map((event, index) => (
                   // row for each event
                   <tr key={index}>
-                    <td>{event._date}</td>
                     <th>{event._idTitle}</th>
                     <td>{event._drawNumber}</td>
                     <td>{event._winner}</td>

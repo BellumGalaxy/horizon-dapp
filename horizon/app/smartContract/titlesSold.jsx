@@ -26,39 +26,6 @@ const TitlesSold = ({ titleId, contractId, onReceiveData }) => {
   }, [titleSoldInfos, onReceiveData]);
 
   const processContractData = (data) => {
-    return Object.values(data).map((value, index) => {
-      if (value === "0x0000000000000000000000000000000000000000") {
-        return "The contract don't have a collateral allocated";
-      }
-      if (index === 2 || index === 4) {
-        return BigNumber.isBigNumber(value)
-          ? `$ ${formatEther(value)}`
-          : value;
-      }
-      if (BigNumber.isBigNumber(value)) {
-        return value.toString();
-      } else if (typeof value === "boolean") {
-        return value ? "Yes" : "No";
-      }
-      if (index === 13) {
-        switch (value) {
-          case 0:
-            return "Status: Canceled";
-          case 1:
-            return "Status: Late";
-          case 2:
-            return "Status: OnSchedule";
-          case 3:
-            return "Status: Withdraw";
-          case 4:
-            return "Status: Finalized ";
-        }
-      }
-      return value;
-    });
-  };
-
-  const renderDataList = () => {
     const labels = [
       "Contract Id",
       "Schedule",
@@ -77,18 +44,73 @@ const TitlesSold = ({ titleId, contractId, onReceiveData }) => {
       "Withdraw",
     ];
 
-    return labels.map((label, index) => (
-      <li key={index} className="flex flex-col mb-1">
-        <span className="font-semibold text-gray-700">{label}:</span>
-        <span className="text-gray-500">{formattedData[index]}</span>
-      </li>
-    ));
+    return labels.map((label, index) => {
+      let value = data[index];
+
+      if (value === "0x0000000000000000000000000000000000000000") {
+        value = "The contract doesn't have a collateral allocated";
+      } else if (index === 2 || index === 4 || index === 12) {
+        value = BigNumber.isBigNumber(value)
+          ? `$ ${formatEther(value)}`
+          : value;
+      } else if (BigNumber.isBigNumber(value)) {
+        value = value.toString();
+      } else if (typeof value === "boolean") {
+        value = value ? "Yes" : "No";
+      } else if (index === 13) {
+        switch (value) {
+          case 0:
+            value = "Status: Canceled";
+            break;
+          case 1:
+            value = "Status: Late";
+            break;
+          case 2:
+            value = "Status: OnSchedule";
+            break;
+          case 3:
+            value = "Status: Withdraw";
+            break;
+          case 4:
+            value = "Status: Finalized";
+            break;
+        }
+      }
+      return { label, value };
+    });
+  };
+
+  const renderDataList = () => {
+    return (
+      <tbody>
+        {formattedData.map((item, index) => (
+          <tr key={index}>
+            <th>{index + 1}</th> {/* Número da linha */}
+            <td>{item.label}</td> {/* Rótulo */}
+            <td>{item.value}</td> {/* Valor formatado */}
+          </tr>
+        ))}
+      </tbody>
+    );
   };
 
   return (
     <div>
-      <div>
-        {isLoading ? <p>Loading...</p> : <ul>{renderDataList()}</ul>}
+      <div className="overflow-x-auto">
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <table className="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Label</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            {renderDataList()}
+          </table>
+        )}
       </div>
     </div>
   );

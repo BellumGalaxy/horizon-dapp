@@ -111,7 +111,7 @@ const TitleDetails = ({ params }) => {
           {/* row 1 */}
           <tr>
             <th>Base Rate:</th>
-            <td className="font-bold">10%</td>
+            <td className="font-bold text-center">10%</td>
             <td></td>
             <td></td>
             <td></td>
@@ -123,7 +123,7 @@ const TitleDetails = ({ params }) => {
           {/* row 2 */}
           <tr>
             <th>Daily Rate:</th>
-            <td className="font-bold">3%</td>
+            <td className="font-bold text-center">3%</td>
           </tr>
         </tbody>
       </table>
@@ -135,8 +135,7 @@ const TitleDetails = ({ params }) => {
           {/* row 1 */}
           <tr>
             <th>First day:</th>
-            <td className="font-bold">10%</td>
-            <td></td>
+            <td className="font-bold text-center">10%</td>
             <td></td>
             <td></td>
             <td></td>
@@ -151,12 +150,12 @@ const TitleDetails = ({ params }) => {
           {/* row 2 */}
           <tr>
             <th>Second day:</th>
-            <td className="font-bold">6%</td>
+            <td className="font-bold text-center">6%</td>
           </tr>
           {/* row 3 */}
           <tr>
             <th>Subsequent days:</th>
-            <td className="font-bold">3%</td>
+            <td className="font-bold text-center">3%</td>
           </tr>
         </tbody>
       </table>
@@ -169,7 +168,13 @@ const TitleDetails = ({ params }) => {
           {/* row 1 */}
           <tr>
             <th>Total interest:</th>
-            <td className="font-bold">10% + 6% +3%</td>
+            <td className="font-bold text-right">10% + 6% +3%</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -183,12 +188,12 @@ const TitleDetails = ({ params }) => {
           {/* row 2 */}
           <tr>
             <th>Installment Value:</th>
-            <td className="font-bold">100 + 19%.</td>
+            <td className="font-bold text-right">100 + 19%.</td>
           </tr>
           {/* row 3 */}
           <tr>
             <th>Amount to be paid:</th>
-            <td className="font-bold">$119</td>
+            <td className="font-bold text-right">$119</td>
           </tr>
         </tbody>
       </table>

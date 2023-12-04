@@ -3,7 +3,7 @@ import React from "react";
 const MyCollapse = ({ title, children }) => {
   return (
     <div>
-      <div className="collapse bg-base-200">
+      <div className="collapse bg-base-100 border">
         <input type="checkbox" />
         <div className="collapse-title text-xl font-medium">{title}</div>
         <div className="collapse-content">{children}</div>
