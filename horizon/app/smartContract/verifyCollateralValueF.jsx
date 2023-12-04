@@ -6,17 +6,23 @@ import {
   Web3Button,
   ThirdwebProvider,
 } from "@thirdweb-dev/react";
-import HorizonR_ABI from "../contracts_abi/HorizonFujiR.json";
-import { BigNumber } from "ethers";
+import HorizonR_ABI from "../contracts_abi/HorizonFujiR";
 import { AvalancheFuji } from "@thirdweb-dev/chains";
 
-const contractAddress = "0xe5121F551333DD569602E82483641D8ad0D93718";
+const contractAddress = "0xA67Af3c365778A2DD0E00cE1D717309B8ccD76C5";
 
 export default function VerifyCollateralValue({
   titleId,
   contractId,
   titleData,
 }) {
+  const { _format, contractName, sourceName, abi } = HorizonR_ABI;
+  const { contract } = useContract(contractAddress, abi);
+  const { mutateAsync, isLoading } = useContractWrite(
+    contract,
+    "verifyCollateralValue"
+  ); // ["motos","77","5223","2015-1"]
+
   const [rwaId, setRwaId] = useState("");
   const [vehicleType, setVehicleType] = useState("");
   const [brandId, setBrandId] = useState("");
@@ -27,27 +33,10 @@ export default function VerifyCollateralValue({
     setRwaId(event.target.value);
   };
 
+  const drawSelected = titleData ? titleData[8].toString() : "N/A";
+  
   const args = [vehicleType, brandId, modelId, fabricationYear];
 
-  const convertBigNumbers = (bigNumbers) => {
-    return bigNumbers.map((bigNumber) =>
-      BigNumber.isBigNumber(bigNumber) ? bigNumber.toString() : bigNumber
-    );
-  };
-
-  const readableData = titleData
-    ? convertBigNumbers(Object.values(titleData))
-    : [];
-
-  const drawSelected = readableData[7];
-
-  const { _format, contractName, sourceName, abi } = HorizonR_ABI;
-  const { contract } = useContract(contractAddress, abi);
-  const { mutateAsync, isLoading } = useContractWrite(
-    contract,
-    "verifyCollateralValue"
-  );
-  //  ["motos","77","5223","2015-1"]
   return (
     <ThirdwebProvider activeChain={AvalancheFuji}>
       <div>

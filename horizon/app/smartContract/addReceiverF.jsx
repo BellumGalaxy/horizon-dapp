@@ -4,7 +4,7 @@ import { useContract, useContractWrite, Web3Button } from "@thirdweb-dev/react";
 import HorizonFujiR_ABI from "../contracts_abi/HorizonFujiR.json";
 import { AvalancheFuji } from "@thirdweb-dev/chains";
 
-const contractAddress = "0xe5121F551333DD569602E82483641D8ad0D93718";
+const contractAddress = "0xA67Af3c365778A2DD0E00cE1D717309B8ccD76C5";
 
 export default function AddPolyReceiver() {
   const { _format, contractName, sourceName, abi } = HorizonFujiR_ABI;

@@ -1,4 +1,4 @@
-export { default as AddCollateralF } from "./addColateralF";
+export { default as AddCollateralF } from "./addCollateralF";
 export { default as AddFujiReceiver } from "./addReceiver";
 export { default as AddPolyReceiver } from "./addReceiverF";
 export { default as AddRWA } from "./addRwaCollateral";

@@ -10,9 +10,17 @@ import HorizonR_ABI from "../contracts_abi/HorizonFujiR.json";
 import { BigNumber } from "ethers";
 import { AvalancheFuji } from "@thirdweb-dev/chains";
 
-const contractAddress = "0xe5121F551333DD569602E82483641D8ad0D93718";
+const contractAddress = "0xA67Af3c365778A2DD0E00cE1D717309B8ccD76C5";
 
 export default function AddCollateralF({ titleId, contractId, titleData }) {
+  const { _format, contractName, sourceName, abi } = HorizonR_ABI;
+  const { contract } = useContract(contractAddress, abi);
+
+  
+  const { mutateAsync, isLoading } = useContractWrite(
+    contract,
+    "addCollateral"
+  );
   const [rwaId, setRwaId] = useState("");
 
   const handleRwaIdChange = (event) => {
@@ -31,13 +39,6 @@ export default function AddCollateralF({ titleId, contractId, titleData }) {
 
   const drawSelected = readableData[7];
 
-  const { _format, contractName, sourceName, abi } = HorizonR_ABI;
-  const { contract } = useContract(contractAddress, abi);
-
-  const { mutateAsync, isLoading } = useContractWrite(
-    contract,
-    "addCollateral"
-  );
 
   return (
     <ThirdwebProvider activeChain={AvalancheFuji}>

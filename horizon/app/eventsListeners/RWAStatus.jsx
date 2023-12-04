@@ -6,13 +6,12 @@ import Horizon_ABI from "../contracts_abi/Horizon";
 
 const contractAddress = "0x8fEB780f9152303a53F4687D0da2d89743F30E15";
 
-const RWAStatus = ({ titleId, contractId }) => {
+const RWAStatus = () => {
+  //FIRST EVENT
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
   const { contract } = useContract(contractAddress, abi);
-  const { topics, data: events } = useContractEvents(
-    contract,
-    "CreatingPermission"
-  );
+  const { data: events } = useContractEvents(contract, "CreatingPermission");
+
   const [eventData, setEventData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -35,13 +34,17 @@ const RWAStatus = ({ titleId, contractId }) => {
     setIsLoading(false);
   }, [events]);
 
-  if (isLoading) {
+  if (isLoading || !eventData || eventData.length === 0) {
     return <Spinner />;
   }
 
   return (
     <div>
       <h1>Dados do Evento:</h1>
+      <p>
+        Your permission has been send. Wait for 30 minutes to verify your asset
+        value
+      </p>
       <div>Title ID: {eventData[0]._idTitle}</div>
       <div>Contract ID: {eventData[0]._contractId}</div>
       <div>Draw in which you were selected: {eventData[0]._drawSelected}</div>
