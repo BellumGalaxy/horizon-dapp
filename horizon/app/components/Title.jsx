@@ -1,52 +1,67 @@
 "use client";
 import React, { useState } from "react";
-import { AllTitles, BuyTitle, DrawDate, PaymentDeadline } from "../smartContract";
+import {
+  AllTitles,
+  BuyTitle,
+  DrawDate,
+  PaymentDeadline,
+} from "../smartContract";
 
 const Title = ({ titleId, scheduleId, installmentNumber }) => {
   const [withdrawType, setWithdrawType] = useState("true");
   return (
-    <div className="card lg:card-side bg-base-100 shadow-xl">
-      <figure className="container mx-auto ml-5 justify-items-center">
-        <img src="/title.jpg" alt="Title" />
-      </figure>
-      <div className="card-body flex flex-col container mx-auto mt-3">
-        <h2 className="card-title">Confirm the Title information</h2>
-        <AllTitles titleId={titleId} />
-        <DrawDate
-          scheduleId={scheduleId}
-          installmentNumber={installmentNumber}
-        />
-        <PaymentDeadline
-          scheduleId={scheduleId}
-          installmentNumber={installmentNumber}
-        />
-        <div className="form-control">
-          <label className="label cursor-pointer">
-            <span className="label-text">Open Withdraw</span>
-            <input
-              type="radio"
-              name="withdrawType"
-              value="true"
-              checked={withdrawType === "true"}
-              onChange={() => setWithdrawType("true")}
-              className="radio checked:bg-black"
-            />
-          </label>
+    <div className="card bg-base-100 shadow-xl">
+      <h2 className="title text-center font-bold text-3xl">
+        Review Your Purchase Information
+      </h2>
+      <div className="flex grid-cols-2">
+        <div className="justify-self-start w-2/3">
+          <figure className="">
+            <img src="/title.jpg" alt="Title" />
+          </figure>
         </div>
-        <div className="form-control">
-          <label className="label cursor-pointer">
-            <span className="label-text">Conditional Withdraw</span>
-            <input
-              type="radio"
-              name="withdrawType"
-              value="false"
-              checked={withdrawType === "false"}
-              onChange={() => setWithdrawType("false")}
-              className="radio checked:bg-black"
+        <div className="justify-self-end w-1/3 ml-5">
+          <div className="space-y-5">
+            <AllTitles titleId={titleId} />
+
+            <DrawDate
+              scheduleId={scheduleId}
+              installmentNumber={installmentNumber}
             />
-          </label>
+
+            <PaymentDeadline
+              scheduleId={scheduleId}
+              installmentNumber={installmentNumber}
+            />
+          </div>
+          <div className="form-control mt-5 mr-5">
+            <label className="label cursor-pointer">
+              <span className="label-text">Open Withdraw</span>
+              <input
+                type="radio"
+                name="withdrawType"
+                value="true"
+                checked={withdrawType === "true"}
+                onChange={() => setWithdrawType("true")}
+                className="radio checked:bg-black"
+              />
+            </label>
+          </div>
+          <div className="form-control mr-5">
+            <label className="label cursor-pointer">
+              <span className="label-text">Conditional Withdraw</span>
+              <input
+                type="radio"
+                name="withdrawType"
+                value="false"
+                checked={withdrawType === "false"}
+                onChange={() => setWithdrawType("false")}
+                className="radio checked:bg-black"
+              />
+            </label>
+          </div>
+          <BuyTitle titleId={titleId} withdrawPeriod={withdrawType} />
         </div>
-        <BuyTitle titleId={titleId} withdrawPeriod={withdrawType} />
       </div>
     </div>
   );

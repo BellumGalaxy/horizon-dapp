@@ -27,13 +27,19 @@ export default function DrawDate({ scheduleId, installmentNumber }) {
   const date = convertTimestampToDate(readableTimestamp);
 
   return (
-    <div>
+    <div className="overflow-x-auto mt-5">
       <h3 className="font-bold text-lg mt-2">
-        Draw number {installmentNumber}
+        Next Draw - {installmentNumber}
       </h3>
-      <ul className="mt-1">
-        <li>Date of next draw: {date}</li>
-      </ul>
+      <table className="table">
+        <tbody>
+          {/* row 1 */}
+          <tr>
+            <th>Date:</th>
+            <td className="font-bold text-right">{date}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }

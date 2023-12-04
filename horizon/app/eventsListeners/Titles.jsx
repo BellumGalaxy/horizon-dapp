@@ -38,9 +38,9 @@ const Titles = () => {
           _scheduleId: eventData?._scheduleId?.toString() ?? "N/A",
           _titleValue:
             convertWeiToDollar(eventData?._titleValue?.toString()) ?? "N/A",
-          _installments:
-            eventData?._installments?.toString() ?? "N/A",
-          _monthlyValue: convertWeiToDollar(eventData?._monthlyValue?.toString()) ?? "N/A",
+          _installments: eventData?._installments?.toString() ?? "N/A",
+          _monthlyValue:
+            convertWeiToDollar(eventData?._monthlyValue?.toString()) ?? "N/A",
         };
       });
       setTitles(formattedEvents);
@@ -60,9 +60,9 @@ const Titles = () => {
     <main className="mt-5">
       {isLoading ? (
         <div className="flex justify-center items-center">
-            <span className="visually-hidden">
-              <Spinner />
-            </span>
+          <span className="visually-hidden">
+            <Spinner />
+          </span>
         </div>
       ) : (
         titles.map((event, index) => (
@@ -77,18 +77,40 @@ const Titles = () => {
               />
             </figure>
             <div className="card-body place-content-center">
-              <h2 className="card-title">Title ID: {event._titleId}</h2>
-              <ul>
-                <li>Schedule: {event._scheduleId}</li>
-                <li>Value: ${event._titleValue}</li>
-                <li>Installments: {event._installments}</li>
-                <li>Monthly Value: ${event._monthlyValue}</li>
-              </ul>
-              <div className="card-actions">
-                <Link
-                  href={`/allproducts/${event._titleId}`}
-                >
-                  <button className="btn btn-accent text-base-100">
+              <div className="">
+                <h2 className="card-title justify-center">
+                  Title ID: {event._titleId}
+                </h2>
+                <div className="overflow-x-auto">
+                  <table className="table">
+                    <tbody>
+                      {/* row 1 */}
+                      <tr>
+                        <th>Schedule</th>
+                        <td>{event._scheduleId}</td>
+                      </tr>
+                      {/* row 2 */}
+                      <tr>
+                        <th>Value</th>
+                        <td>${event._titleValue}</td>
+                      </tr>
+                      {/* row 3 */}
+                      <tr>
+                        <th>Installments</th>
+                        <td>{event._installments}</td>
+                      </tr>
+                      {/* row 4 */}
+                      <tr>
+                        <th>Monthly Value</th>
+                        <td>${event._monthlyValue}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div className="card-actions mt-5 place-content-center">
+                <Link href={`/allproducts/${event._titleId}`}>
+                  <button className="btn btn-neutral text-base-100">
                     More info
                   </button>
                 </Link>

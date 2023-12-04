@@ -44,21 +44,48 @@ export default function AllTitles({ titleId, onReceiveData }) {
   return (
     <main>
       <div>
-        <h3 className="font-bold text-lg mt-2">Schedule Infos</h3>
-        {/* Abertura e Fechamento das Vendas */}
-        <ul className="mt-1">
-          <li>Selling Opening: {readableData[0]}</li>
-          <li>Selling Close: {readableData[1]}</li>
-        </ul>
+        <div className="overflow-x-auto mt-5">
+          <h3 className="font-bold text-lg mt-2 text-left">Schedule Infos</h3>
+          <table className="table">
+            <tbody>
+              {/* row 1 */}
+              <tr>
+                <th>Selling Opening:</th>
+                <td className="font-bold text-right">{readableData[0]}</td>
+              </tr>
+              {/* row 2 */}
+              <tr>
+                <th>Selling Close:</th>
+                <td className="font-bold text-right">{readableData[1]}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         {/* Valor Total do Título */}
         {/* Número de Parcelas */}
         {/* Valor Mensal  */}
-        <h3 className="font-bold text-lg mt-2">Value Info</h3>
-        <ul className="mt-1">
-          <li>Title Value: $ {readableData[4]}.00</li>
-          <li>Total installments: {readableData[5]}</li>
-          <li>Installment Value: $ {readableData[6]}.00</li>
-        </ul>
+        <div className="overflow-x-auto mt-5">
+          <h3 className="font-bold text-lg mt-2 text-left">Value Info</h3>
+          <table className="table">
+            <tbody>
+              {/* row 1 */}
+              <tr>
+                <th>Title Value:</th>
+                <td className="font-bold text-right">$ {readableData[4]}.00</td>
+              </tr>
+              {/* row 2 */}
+              <tr>
+                <th>Total installments:</th>
+                <td className="font-bold text-right">{readableData[5]}</td>
+              </tr>
+              {/* row 3 */}
+              <tr>
+                <th>Installment Value:</th>
+                <td className="font-bold text-right">$ {readableData[6]}.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </main>
   );
