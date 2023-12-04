@@ -33,7 +33,6 @@ const WinnerSelected = () => {
       const newFormattedEvents = events.map((event) => {
         const eventData = event.data;
         return {
-          _date: formattedDate,
           _idTitle: eventData?._idTitle?.toString() ?? "N/A",
           _drawNumber: eventData?._drawNumber?.toString() ?? "N/A",
           _randomValue: eventData?._randomValue?.toString() ?? "N/A",
@@ -58,17 +57,16 @@ const WinnerSelected = () => {
   return (
     <main className="mt-5">
       {isLoading ? (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center ">
           <Spinner />
         </div>
       ) : (
-        <div className="card card-side bg-base-100 shadow-xl mt-5">
-          <div className="overflow-x-auto">
+        <div className="card card-side bg-base-100 shadow-xl mt-5 w-full">
+          <div className="overflow-x-auto w-full">
             <table className="table table-zebra w-full">
               {/* head */}
               <thead>
                 <tr>
-                  <th>Date</th>
                   <th>Title ID</th>
                   <th>Draw Number</th>
                   <th>Random Value</th>
@@ -77,10 +75,9 @@ const WinnerSelected = () => {
                 </tr>
               </thead>
               <tbody>
-                {titles.map((event, index) => (
+                {titles.slice(0, 5).map((event, index) => (
                   // row for each event
                   <tr key={index}>
-                    <td>{event._date}</td>
                     <th>{event._idTitle}</th>
                     <td>{event._drawNumber}</td>
                     <td>{event._randomValue}</td>

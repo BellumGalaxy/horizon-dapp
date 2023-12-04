@@ -1,7 +1,8 @@
 "use client";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";import {
+import Navbar from "./components/Navbar";
+import {
   metamaskWallet,
   coinbaseWallet,
   walletConnect,
@@ -10,6 +11,7 @@ import Navbar from "./components/Navbar";import {
   ThirdwebProvider,
 } from "@thirdweb-dev/react";
 import { AvalancheFuji, Mumbai } from "@thirdweb-dev/chains";
+import { CLIENT_ID } from "./thirdweb/addresses";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +22,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <ThirdwebProvider
+          clientId={CLIENT_ID}
           desiredChainId={Mumbai}
           supportedChains={supportedChains}
           supportedWallets={[

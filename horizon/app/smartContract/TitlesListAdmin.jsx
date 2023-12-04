@@ -47,19 +47,18 @@ const TitlesListAdmin = () => {
   };
   return (
     <div>
-      <main className="mt-5">
+      <main className="mt-5 w-full">
         {isLoading ? (
           <div className="flex justify-center items-center">
             <Spinner />
           </div>
         ) : (
-          <div className="card card-side bg-base-100 shadow-xl mt-5">
-            <div className="overflow-x-auto">
+          <div className="card card-side bg-base-100 shadow-xl mt-5 w-full">
+            <div className="overflow-x-auto w-full">
               <table className="table table-zebra w-full">
                 {/* head */}
                 <thead>
                   <tr>
-                    <th>Date</th>
                     <th>Title ID</th>
                     <th>Schedule ID</th>
                     <th>Title Value</th>
@@ -71,17 +70,16 @@ const TitlesListAdmin = () => {
                 <tbody>
                   {titles.map((event, index) => (
                     <tr key={index}>
-                      <td>{event._date}</td>
                       <th>{event._titleId}</th>
                       <td>{event._scheduleId}</td>
                       <td>{event._titleValue}</td>
                       <td>{event._installments}</td>
                       <td>{event._monthlyValue}</td>
                       <td>
-                        <Link
-                          href={`/adm/${event._titleId}`}
-                        >
-                          <button className="btn btn-wide btn-accent">See Options</button>
+                        <Link href={`/adm/${event._titleId}`}>
+                          <button className="btn btn-wide btn-accent">
+                            See Options
+                          </button>
                         </Link>
                       </td>
                     </tr>

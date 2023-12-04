@@ -73,18 +73,18 @@ const PrizesPaid = () => {
                 <tr>
                   <th>Title ID</th>
                   <th>Draw Number</th>
-                  <th>Winner</th>
                   <th>Prize Value</th>
+                  <th className="text-center">Winner</th>
                 </tr>
               </thead>
               <tbody>
-                {titles.map((event, index) => (
+                {titles.slice(0, 5).map((event, index) => (
                   // row for each event
                   <tr key={index}>
                     <th>{event._idTitle}</th>
                     <td>{event._drawNumber}</td>
-                    <td>{event._winner}</td>
                     <td>{event._titleValue}</td>
+                    <td className="text-center">{event._winner}</td>
                   </tr>
                 ))}
               </tbody>
