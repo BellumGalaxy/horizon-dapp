@@ -7,7 +7,6 @@ import Horizon_ABI from "../contracts_abi/Horizon";
 const contractAddress = "0x8fEB780f9152303a53F4687D0da2d89743F30E15";
 
 const RWAStatus = () => {
-  //FIRST EVENT
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
   const { contract } = useContract(contractAddress, abi);
   const { data: events } = useContractEvents(contract, "CreatingPermission");

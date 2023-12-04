@@ -1,5 +1,6 @@
 "use client";
 import { BigNumber } from "ethers";
+import { formatEther } from "ethers/lib/utils";
 import { useEffect, useState } from "react";
 import { useContract, useContractRead } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
@@ -28,6 +29,11 @@ const TitlesSold = ({ titleId, contractId, onReceiveData }) => {
     return Object.values(data).map((value, index) => {
       if (value === "0x0000000000000000000000000000000000000000") {
         return "The contract don't have a collateral allocated";
+      }
+      if (index === 2 || index === 4) {
+        return BigNumber.isBigNumber(value)
+          ? `$ ${formatEther(value)}`
+          : value;
       }
       if (BigNumber.isBigNumber(value)) {
         return value.toString();
