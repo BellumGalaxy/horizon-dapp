@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useContract, useContractWrite, Web3Button } from "@thirdweb-dev/react";
 import HorizonFujiR_ABI from "../contracts_abi/HorizonFujiR.json";
-import { AvalancheFuji } from "@thirdweb-dev/chains";
+import { toast } from "react-toastify";
 
 const contractAddress = "0xA67Af3c365778A2DD0E00cE1D717309B8ccD76C5";
 
@@ -30,8 +30,14 @@ export default function AddPolyReceiver() {
           })
         }
         disable={isLoading}
-        onSuccess={(result) => console.log(result)}
-        onError={(error) => console.log(error)}
+        onSuccess={(result) => {
+          console.log(result);
+          toast.success("Receiving address successfully added!");
+        }}
+        onError={(error) => {
+          console.error(error);
+          toast.error("Error in adding the address!");
+        }}
       >
         {isLoading ? "Processing..." : "Add Receiver"}
       </Web3Button>

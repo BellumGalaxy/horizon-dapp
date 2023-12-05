@@ -1,6 +1,7 @@
 "use client";
 import { useContract, useContractWrite, Web3Button } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
+import { toast } from "react-toastify";
 
 const contractAddress = "0x8fEB780f9152303a53F4687D0da2d89743F30E15";
 
@@ -15,7 +16,6 @@ export default function WinnerW({ titleId, contractId }) {
 
   return (
     <div className="flex flex-col items-center justify-center space-x-3">
-
       <Web3Button
         contractAddress={contractAddress}
         contractAbi={abi}
@@ -25,8 +25,14 @@ export default function WinnerW({ titleId, contractId }) {
           })
         }
         disable={isLoading}
-        onSuccess={(result) => console.log(result)}
-        onError={(error) => console.log(error)}
+        onSuccess={(result) => {
+          console.log(result);
+          toast.success("Withdrawal successfully completed!");
+        }}
+        onError={(error) => {
+          console.error(error);
+          toast.error("Error during withdrawal!");
+        }}
       >
         Withdraw
       </Web3Button>

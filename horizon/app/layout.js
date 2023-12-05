@@ -10,6 +10,8 @@ import {
   embeddedWallet,
   ThirdwebProvider,
 } from "@thirdweb-dev/react";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import { AvalancheFuji, Mumbai } from "@thirdweb-dev/chains";
 import { CLIENT_ID } from "./thirdweb/addresses";
 
@@ -38,6 +40,18 @@ export default function RootLayout({ children }) {
           ]}
         >
           <Navbar />
+          <ToastContainer
+            position="top-center"
+            autoClose={4000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
           <main className="px-8 py-20 max-w-6xl mx-auto">{children}</main>
         </ThirdwebProvider>
       </body>

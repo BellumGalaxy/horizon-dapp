@@ -1,6 +1,7 @@
 import { Web3Button, useContract, useContractWrite } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const contractAddress = "0x8feb780f9152303a53f4687d0da2d89743f30e15";
 
@@ -47,8 +48,14 @@ export default function AddTitle({ titleId, contractId }) {
             })
           }
           disable={isLoading}
-          onSuccess={(result) => console.log(result)}
-          onError={(error) => console.log(error)}
+          onSuccess={(result) => {
+            console.log(result);
+            toast.success("Your collateral has been successfully added!");
+          }}
+          onError={(error) => {
+            console.error(error);
+            toast.error("An error occurred while adding your collateral!");
+          }}
         >
           {isLoading ? "Processing..." : "Add Collateral"}
         </Web3Button>

@@ -7,7 +7,7 @@ import Horizon_ABI from "../contracts_abi/Horizon.json";
 
 const contractAddress = "0x8fEB780f9152303a53F4687D0da2d89743F30E15";
 
-const TitlesSold = ({ titleId, contractId, onReceiveData }) => {
+const TitlesSold = ({ titleId, contractId }) => {
   const { abi } = Horizon_ABI;
   const { contract } = useContract(contractAddress, abi);
   const { data: titleSoldInfos, isLoading } = useContractRead(
@@ -15,15 +15,17 @@ const TitlesSold = ({ titleId, contractId, onReceiveData }) => {
     "titleSoldInfos",
     [titleId, contractId]
   );
+
   const [formattedData, setFormattedData] = useState([]);
+
 
   useEffect(() => {
     if (titleSoldInfos) {
-      onReceiveData(titleSoldInfos);
+      ;
       const processedData = processContractData(titleSoldInfos);
       setFormattedData(processedData);
     }
-  }, [titleSoldInfos, onReceiveData]);
+  }, [titleSoldInfos]);
 
   const processContractData = (data) => {
     const labels = [

@@ -1,6 +1,7 @@
 "use client";
 import { useContract, useContractWrite, Web3Button } from "@thirdweb-dev/react";
 import HorizonStaff_ABI from "../contracts_abi/HorizonStaff.json";
+import { toast } from "react-toastify";
 
 const contractAddress = "0x3547951AAA367094AFABcaE24f123473fF502bFa";
 
@@ -24,8 +25,14 @@ export default function WithdrawFee() {
           })
         }
         disable={isLoading}
-        onSuccess={(result) => console.log(result)}
-        onError={(error) => console.log(error)}
+        onSuccess={(result) => {
+          console.log(result);
+          toast.success("Withdrawal successfully completed!");
+        }}
+        onError={(error) => {
+          console.error(error);
+          toast.error("Error during withdrawal!");
+        }}
       >
         Withdraw
       </Web3Button>

@@ -1,7 +1,7 @@
 "use client";
 const WithdrawConditionsModal = () => {
   return (
-    <div class="flex justify-center items-center">
+    <div className="flex justify-center items-center">
       <button
         className="btn btn-info text-base-100 text-lg mx-5"
         onClick={() => document.getElementById("my_modal_1").showModal()}

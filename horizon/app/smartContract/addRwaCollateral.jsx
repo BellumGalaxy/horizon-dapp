@@ -1,7 +1,7 @@
 "use client";
 import { Web3Button, useContract, useContractWrite } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
-import RWAStatus from "../eventsListeners/RWAStatus";
+import { toast } from "react-toastify";
 
 const contractAddress = "0x8feb780f9152303a53f4687d0da2d89743f30e15";
 
@@ -12,7 +12,7 @@ export default function AddRWA({ titleId, contractId }) {
     contract,
     "addRWACollateral"
   );
-  
+
   return (
     <div>
       {/* RWAStatus usar esse aqui como condicional de sucesso de envio */}
@@ -30,8 +30,14 @@ export default function AddRWA({ titleId, contractId }) {
             })
           }
           disable={isLoading}
-          onSuccess={(result) => console.log(result)}
-          onError={(error) => console.log(error)}
+          onSuccess={(result) => {
+            console.log(result);
+            toast.success("Your request is being processed!");
+          }}
+          onError={(error) => {
+            console.error(error);
+            toast.error("An error occurred while processing your request!");
+          }}
         >
           {isLoading ? "Processing..." : "Add Collateral"}
         </Web3Button>

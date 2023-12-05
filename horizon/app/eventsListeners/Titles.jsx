@@ -7,26 +7,26 @@ import Spinner from "../components/Spinner";
 import { ethers } from "ethers";
 
 const titleImages = [
-  "/tokens/token1.jpg",
-  "/tokens/token3.jpg",
-  "/tokens/token2.jpg",
-  "/tokens/token4.jpg",
+  "/myTitles/ativo1.jpg",
+  "/myTitles/ativo2.jpg",
+  "/myTitles/ativo3.jpg",
+  "/myTitles/ativo4.jpg",
 ];
 
 const Titles = () => {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
+
   const { contract } = useContract(
     "0x8fEB780f9152303a53F4687D0da2d89743F30E15",
     abi
   );
+
   const { topics, data: events } = useContractEvents(
     contract,
     "NewTitleCreated"
   );
   const [titles, setTitles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  console.log(events);
 
   useEffect(() => {
     setIsLoading(true);

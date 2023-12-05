@@ -25,6 +25,7 @@ export default function TitleOwners() {
   const { topics, data: events } = useContractEvents(contract, "NewTitleSold");
   const [titles, setTitles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     setIsLoading(true);
     if (events && events.length > 0) {
@@ -61,7 +62,7 @@ export default function TitleOwners() {
 
           return (
             <div
-              key={event._titleId}
+              key={index}
               className="card card-side bg-base-100 shadow-xl mt-5"
             >
               <figure className="justify-items-start lg:max-h-96 lg:max-w-96">

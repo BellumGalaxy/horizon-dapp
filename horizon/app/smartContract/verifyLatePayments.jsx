@@ -1,6 +1,7 @@
 import { useContract, useContractWrite, Web3Button } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const contractAddress = "0x8fEB780f9152303a53F4687D0da2d89743F30E15";
 
@@ -36,8 +37,14 @@ export default function VerifyLatePayment({titleId}) {
           })
         }
         disable={isLoading}
-        onSuccess={(result) => console.log(result)}
-        onError={(error) => console.log(error)}
+        onSuccess={(result) => {
+          console.log(result);
+          toast.success("Verification successfully completed!");
+        }}
+        onError={(error) => {
+          console.error(error);
+          toast.error("Error during verification!");
+        }}
       >
         Verify Late Payments
       </Web3Button>

@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Web3Button, useContract, useContractWrite } from "@thirdweb-dev/react";
 import Horizon_ABI from "../contracts_abi/Horizon.json";
+import { toast } from "react-toastify";
 
 const contractAddress = "0x8fEB780f9152303a53F4687D0da2d89743F30E15";
 const { _format, contractName, sourceName, abi } = Horizon_ABI;
@@ -79,8 +80,14 @@ export default function CreateT() {
           })
         }
         disable={isLoading}
-        onSuccess={(result) => console.log(result)}
-        onError={(error) => console.log(error)}
+        onSuccess={(result) => {
+          console.log(result);
+          toast.success("The title was successfully created!");
+        }}
+        onError={(error) => {
+          console.error(error);
+          toast.error("Error in creating the title!");
+        }}
       >
         Create Title
       </Web3Button>
