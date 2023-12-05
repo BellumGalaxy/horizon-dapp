@@ -7,7 +7,7 @@ import {
 import HorizonFunctions_ABI from "../contracts_abi/HorizonFunctions";
 import HorizonR_ABI from "../contracts_abi/HorizonFujiR";
 
-const contractAddress = "0x8fEB780f9152303a53F4687D0da2d89743F30E15";
+const contractAddress = "0x317383204E6406B61258cB53D535AE770B7a984F";
 const contractExecuteAddress = "0xe5121F551333DD569602E82483641D8ad0D93718";
 
 const CollateralMonitor = () => {
