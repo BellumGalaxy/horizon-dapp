@@ -7,7 +7,12 @@ import {
   PaymentDeadline,
 } from "../smartContract";
 
-const Title = ({ titleId, scheduleId, installmentNumber }) => {
+const Title = ({
+  titleId,
+  scheduleId,
+  installmentNumber,
+  totalInstallments,
+}) => {
   const [withdrawType, setWithdrawType] = useState("true");
   return (
     <div className="card bg-base-100 shadow-xl">
@@ -27,11 +32,13 @@ const Title = ({ titleId, scheduleId, installmentNumber }) => {
             <DrawDate
               scheduleId={scheduleId}
               installmentNumber={installmentNumber}
+              totalInstallments={totalInstallments}
             />
 
             <PaymentDeadline
               scheduleId={scheduleId}
               installmentNumber={installmentNumber}
+              totalInstallments={totalInstallments}
             />
           </div>
           <div className="form-control mt-5 mr-5">

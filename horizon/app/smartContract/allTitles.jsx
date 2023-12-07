@@ -6,7 +6,7 @@ import { BigNumber } from "ethers";
 
 const contractAddress = "0x8feb780f9152303a53f4687d0da2d89743f30e15";
 
-export default function AllTitles({ titleId, onReceiveData }) {
+export default function AllTitles({ titleId }) {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
   const { contract } = useContract(contractAddress, abi);
   const { data, isLoading } = useContractRead(contract, "allTitles", [titleId]);
@@ -31,9 +31,6 @@ export default function AllTitles({ titleId, onReceiveData }) {
     const etherValue = wei;
     return parseFloat(etherValue) / 10 ** 18;
   };
-
-  const scheduleId = readableData[2];
-  const installmentNumber = readableData[3];
 
   readableData[0] = convertTimestampToDate(readableData[0]);
   readableData[1] = convertTimestampToDate(readableData[1]);

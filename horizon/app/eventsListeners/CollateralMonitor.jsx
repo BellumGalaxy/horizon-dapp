@@ -8,7 +8,7 @@ import HorizonFunctions_ABI from "../contracts_abi/HorizonFunctions";
 import HorizonR_ABI from "../contracts_abi/HorizonFujiR";
 
 const contractAddress = "0x317383204E6406B61258cB53D535AE770B7a984F";
-const contractExecuteAddress = "0xe5121F551333DD569602E82483641D8ad0D93718";
+const contractExecuteAddress = "0xA67Af3c365778A2DD0E00cE1D717309B8ccD76C5";
 
 const CollateralMonitor = () => {
   const { abi } = HorizonFunctions_ABI;
@@ -21,6 +21,9 @@ const CollateralMonitor = () => {
     contractExecute,
     "getCollateralPrice"
   );
+
+  console.log(contract);
+  console.log(contractExecute);
 
   useEffect(() => {
     if (events && events.length > 0) {

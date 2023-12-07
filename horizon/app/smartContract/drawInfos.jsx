@@ -11,4 +11,7 @@ export default function DrawInfos() {
     titleId,
     drawNumber,
   ]);
+
+  console.log(contract);
+  
 }

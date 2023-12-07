@@ -13,7 +13,6 @@ import {
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { AvalancheFuji, Mumbai } from "@thirdweb-dev/chains";
-import { CLIENT_ID } from "./thirdweb/addresses";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +23,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <ThirdwebProvider
-          clientId={CLIENT_ID}
+          clientId={process.env.NEXT_PUBLIC_CLIENT_ID}
           desiredChainId={Mumbai}
           supportedChains={supportedChains}
           supportedWallets={[

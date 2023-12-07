@@ -16,7 +16,7 @@ const contractAddress = "0xA67Af3c365778A2DD0E00cE1D717309B8ccD76C5";
 export default function AddCollateralF({ titleId, contractId, titleSoldInfos }) {
   const { _format, contractName, sourceName, abi } = HorizonR_ABI;
   const { contract } = useContract(contractAddress, abi);
-
+  
   const { mutateAsync, isLoading } = useContractWrite(
     contract,
     "addCollateral"

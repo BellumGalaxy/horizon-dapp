@@ -10,7 +10,9 @@ const contractAddress = "0x8feb780f9152303a53f4687d0da2d89743f30e15";
 const CheckoutPage = ({ params }) => {
   const { _format, contractName, sourceName, abi } = Horizon_ABI;
   const { contract } = useContract(contractAddress, abi);
-  const { data, isLoading } = useContractRead(contract, "allTitles", [params.id]);
+  const { data, isLoading } = useContractRead(contract, "allTitles", [
+    params.id,
+  ]);
 
   const convertBigNumbers = (bigNumbers) => {
     return bigNumbers.map((bigNumber) =>
@@ -22,10 +24,16 @@ const CheckoutPage = ({ params }) => {
 
   const scheduleId = readableData[2];
   const installmentNumber = readableData[3];
-  
+  const totalInstallments = readableData[5];
+
   return (
     <div>
-      <Title titleId={params.id} scheduleId={scheduleId} installmentNumber={installmentNumber} />
+      <Title
+        titleId={params.id}
+        scheduleId={scheduleId}
+        installmentNumber={installmentNumber}
+        totalInstallments={totalInstallments}
+      />
     </div>
   );
 };
