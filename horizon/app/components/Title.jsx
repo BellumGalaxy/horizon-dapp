@@ -36,7 +36,7 @@ const Title = ({ titleId, scheduleId, installmentNumber }) => {
           </div>
           <div className="form-control mt-5 mr-5">
             <label className="label cursor-pointer">
-              <span className="label-text">Open Withdraw</span>
+              <span className="label-text font-bold">Open Withdraw</span>
               <input
                 type="radio"
                 name="withdrawType"
@@ -49,7 +49,7 @@ const Title = ({ titleId, scheduleId, installmentNumber }) => {
           </div>
           <div className="form-control mr-5">
             <label className="label cursor-pointer">
-              <span className="label-text">Conditional Withdraw</span>
+              <span className="label-text font-bold">Conditional Withdraw</span>
               <input
                 type="radio"
                 name="withdrawType"

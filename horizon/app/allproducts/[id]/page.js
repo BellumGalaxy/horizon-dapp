@@ -6,8 +6,6 @@ import FeesModal from "../../components/FeesModal";
 import Link from "next/link";
 
 const TitleDetails = ({ params }) => {
-  console.log(params[0]);
-  console.log(params[1]);
   return (
     <main>
       <Carousel />
@@ -106,56 +104,39 @@ const TitleDetails = ({ params }) => {
         It is important to mention that a Title that is overdue will not
         participate in the monthly draws.
       </p>
-      <table className="table">
-        <tbody>
+      <table className="table w-1/2">
+        <tbody className="flex-col">
           {/* row 1 */}
           <tr>
-            <th>Base Rate:</th>
-            <td className="font-bold text-center">10%</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <th className="">Base Rate:</th>
+            <td className="font-bold text-right">10%</td>
           </tr>
           {/* row 2 */}
           <tr>
             <th>Daily Rate:</th>
-            <td className="font-bold text-center">3%</td>
+            <td className="font-bold text-right">3%</td>
           </tr>
         </tbody>
       </table>
       <h2 className="font-bold text-md my-3">
         How are interest rates calculated?
       </h2>
-      <table className="table">
-        <tbody>
+      <table className="table w-1/2">
+        <tbody className="flex-col">
           {/* row 1 */}
-          <tr>
+          <tr className="">
             <th>First day:</th>
-            <td className="font-bold text-center">10%</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td className="font-bold text-right">10%</td>
           </tr>
           {/* row 2 */}
           <tr>
             <th>Second day:</th>
-            <td className="font-bold text-center">6%</td>
+            <td className="font-bold text-right">6%</td>
           </tr>
           {/* row 3 */}
           <tr>
             <th>Subsequent days:</th>
-            <td className="font-bold text-center">3%</td>
+            <td className="font-bold text-right">3%</td>
           </tr>
         </tbody>
       </table>
@@ -163,27 +144,12 @@ const TitleDetails = ({ params }) => {
         The application is simple interest. That is, assuming that the monthly
         payment is $100 and the delay is 3 days.
       </p>
-      <table className="table">
-        <tbody>
+      <table className="table w-1/2">
+        <tbody className="flex-col">
           {/* row 1 */}
           <tr>
             <th>Total interest:</th>
             <td className="font-bold text-right">10% + 6% +3%</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
           </tr>
           {/* row 2 */}
           <tr>
