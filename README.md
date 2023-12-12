@@ -1,20 +1,28 @@
-Hey! Welcome to the Horizon frontend!
+Hey! Welcome to the Horizon front end!
 
 If you've stumbled upon this and are curious about what Horizon is, you can get more information here: [Horizon](https://github.com/BellumGalaxy/constellation-bg)
 
 DISCLAIMER:
-Before we start, please be understanding with me at this moment. This is my first frontend project, and I've only created some web2 applications in a training course. Generally speaking, frontend is new to me.
+Before we start, please be understanding with me at this moment. This is my first front-end project, and I've only created some web2 applications in a training course. Generally speaking, front end is new to me.
 
 So, let's get to it!
 
+### Summary
 1. Horizon dApp
-   1.1 What is a dApp
-   1.2 What it does
-      1.2.1 For the staff
-      1.2.2 For the user
-   1.3 How it was built
-   1.4 Its purpose
-   1.5 Tools used
+
+   1.1. What is a dApp
+
+   1.2. What it does
+
+      1.2.1. For the staff
+
+      1.2.2. For the user
+
+   1.3. How it was built
+
+   1.4. Its purpose
+
+   1.5. Tools used
 
 # 1. Horizon dApp
 
@@ -43,7 +51,7 @@ This application was developed to embody the Protocol's functionality. As the Pr
 
 ## 1.3 How it was built
 
-Due to the limited time available for creation, which was less than 5 days, and the technical limitation mentioned at the beginning of this document, I had to skip steps. Therefore, the entire layout of the application was conceived while it was being developed.
+Due to the limited time available for creation, which was less than 5 days, and the technical limitation mentioned at the beginning of this document, I had to skip steps. Therefore, the entire application layout was conceived while it was being developed.
 
 ## 1.4 Its purpose
 
@@ -56,4 +64,4 @@ The purpose of this application is to make the interaction with Horizon's Smart 
 - Third Web
 - Styling
   - DaisyUi
-  - tailwindCSS
+  - tailwind CSS
